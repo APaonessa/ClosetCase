@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.pitt.cs.cs1635.amp224.closetcase.OutfitScreen">
+
+    <Button
+        android:id="@+id/topRightArrow"
+        android:layout_width="53dp"
+        android:layout_height="250dp"
+        android:text="Button"
+        tools:layout_editor_absoluteX="333dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <Button
+        android:id="@+id/topLeftArrow"
+        android:layout_width="62dp"
+        android:layout_height="250dp"
+        android:text="Button"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <Button
+        android:id="@+id/bottomRightArrow"
+        android:layout_width="53dp"
+        android:layout_height="268dp"
+        android:text="Button"
+        tools:layout_editor_absoluteX="333dp"
+        tools:layout_editor_absoluteY="247dp" />
+
+    <Button
+        android:id="@+id/bottomLeftArrow"
+        android:layout_width="63dp"
+        android:layout_height="272dp"
+        android:text="Button"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="245dp" />
+
+</android.support.constraint.ConstraintLayout>
