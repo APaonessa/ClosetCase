@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.pitt.cs.cs1635.amp224.closetcase.OutfitScreen">
+    tools:context="edu.pitt.cs.cs1635.amp224.closetcase.OutfitScreen"
+    tools:layout_editor_absoluteY="81dp">
 
     <Button
         android:id="@+id/topRightArrow"
-        android:layout_width="53dp"
+        android:layout_width="57.5dp"
         android:layout_height="250dp"
         android:text="Button"
         tools:layout_editor_absoluteX="333dp"
@@ -16,7 +17,7 @@
 
     <Button
         android:id="@+id/topLeftArrow"
-        android:layout_width="62dp"
+        android:layout_width="57.5dp"
         android:layout_height="250dp"
         android:text="Button"
         tools:layout_editor_absoluteX="0dp"
@@ -24,18 +25,42 @@
 
     <Button
         android:id="@+id/bottomRightArrow"
-        android:layout_width="53dp"
-        android:layout_height="268dp"
+        android:layout_width="57.5dp"
+        android:layout_height="250dp"
         android:text="Button"
         tools:layout_editor_absoluteX="333dp"
         tools:layout_editor_absoluteY="247dp" />
 
     <Button
         android:id="@+id/bottomLeftArrow"
-        android:layout_width="63dp"
-        android:layout_height="272dp"
+        android:layout_width="57.5dp"
+        android:layout_height="250dp"
         android:text="Button"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="245dp" />
+
+    <ImageView
+        android:id="@+id/imageViewBottom"
+        android:layout_width="225dp"
+        android:layout_height="215dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewTop"
+        app:srcCompat="@android:color/background_light" />
+
+    <ImageView
+        android:id="@+id/imageViewTop"
+        android:layout_width="225dp"
+        android:layout_height="215dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:color/background_light" />
 
 </android.support.constraint.ConstraintLayout>
