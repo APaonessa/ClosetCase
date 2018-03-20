@@ -12,39 +12,43 @@
         android:layout_width="57.5dp"
         android:layout_height="225dp"
         android:layout_marginTop="4dp"
-        android:text="@string/button"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+        app:layout_constraintTop_toBottomOf="@+id/CompleteButton"
+        app:srcCompat="@android:drawable/ic_media_next"
+        />
 
     <ImageButton
         android:id="@+id/topLeftArrow"
         android:layout_width="57.5dp"
         android:layout_height="225dp"
         android:layout_marginTop="8dp"
-        android:text="@string/button"
         app:layout_constraintBottom_toTopOf="@+id/bottomLeftArrow"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton"
-        app:layout_constraintVertical_bias="0.083" />
+        app:layout_constraintTop_toBottomOf="@+id/UpButton"
+        app:layout_constraintVertical_bias="0.083"
+        app:srcCompat="@android:drawable/ic_media_previous"
+        />
 
     <ImageButton
         android:id="@+id/bottomRightArrow"
         android:layout_width="57.5dp"
         android:layout_height="225dp"
         android:layout_marginTop="8dp"
-        android:text="@string/button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topRightArrow"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@android:drawable/ic_media_next"
+        />
 
     <ImageButton
         android:id="@+id/bottomLeftArrow"
         android:layout_width="57dp"
         android:layout_height="230dp"
-        android:text="@string/button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_media_previous"
+        />
 
     <ImageView
         android:id="@+id/imageViewBottom"
@@ -88,8 +92,8 @@
         android:id="@+id/CompleteButton"
         android:layout_width="43dp"
         android:layout_height="47dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/checkbox_on_background" />
@@ -98,10 +102,12 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="16dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
         android:text="@string/Complete"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+        app:layout_constraintEnd_toStartOf="@+id/CompleteButton"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
 </android.support.constraint.ConstraintLayout>
