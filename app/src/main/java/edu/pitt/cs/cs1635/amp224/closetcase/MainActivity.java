@@ -1,7 +1,9 @@
 package edu.pitt.cs.cs1635.amp224.closetcase;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,10 +21,22 @@ public class MainActivity extends AppCompatActivity {
         buildOutfit = findViewById(R.id.button2);
         manageCloset = findViewById(R.id.button3);
 
-
-
-
     }
+
+    //when find outfit and build outfit buttons are clicked, this method "activates"
+    //and the screen changes from home to outfit screen
+    public void goToOutfitScreen(View view){
+        Intent intent = new Intent(this, OutfitScreen.class);
+        startActivity(intent);
+    }
+
+    //when the manage closet button is clicked
+    //method activates and screen changes from home to closet screen
+    public void goToClosetScreen(View view){
+        //Intent intent = new Intent(this, ClosestScreen.class);
+        //startActivity(intent);
+    }
+
 }
 
 //The home page

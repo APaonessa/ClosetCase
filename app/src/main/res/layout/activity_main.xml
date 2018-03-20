@@ -20,6 +20,7 @@
         android:layout_alignLeft="@+id/button2"
         android:layout_alignStart="@+id/button2"
         android:layout_marginBottom="68dp"
+        android:onClick="goToOutfitScreen"
         android:text="@string/find_outfit" />
 
     <Button
@@ -28,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:onClick="goToOutfitScreen"
         android:text="@string/build_outfit" />
 
     <Button
@@ -38,6 +40,7 @@
         android:layout_alignStart="@+id/button2"
         android:layout_below="@+id/button2"
         android:layout_marginTop="80dp"
+        android:onClick="goToClosetScreen"
         android:text="@string/manage_closet" />
 
 </RelativeLayout>
