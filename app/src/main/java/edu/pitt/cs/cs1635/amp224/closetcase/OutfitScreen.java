@@ -6,7 +6,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-public class OutfitScreen extends AppCompatActivity {
+public class OutfitScreen extends AppCompatActivity  { //Open class
 
     ImageButton topLeft;
     ImageButton topRight;
@@ -18,7 +18,7 @@ public class OutfitScreen extends AppCompatActivity {
     ImageView bottomImage;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) { //Open onCreate
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_outfit_screen);
 
@@ -31,5 +31,10 @@ public class OutfitScreen extends AppCompatActivity {
         topImage = findViewById(R.id.imageViewTop);
         bottomImage = findViewById(R.id.imageViewBottom);
 
-    }
-}
+    }//Close onCreate
+} ///Close class
+
+/* Flipping through pictures means they need to be in the drawable folder.
+So to view pictures in this way select images from database (they are already in drawable folder?
+OPTION1:Put pictures in drawable folder when they are taken from camera in ADD NEW)
+ */
