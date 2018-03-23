@@ -7,8 +7,8 @@
     tools:context="edu.pitt.cs.cs1635.amp224.closetcase.ClosetScreen">
 
     <android.support.constraint.ConstraintLayout
-        android:layout_width="370dp"
-        android:layout_height="496dp"
+        android:layout_width="377dp"
+        android:layout_height="503dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="16dp"
@@ -36,8 +36,8 @@
             android:id="@+id/imageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -58,8 +58,8 @@
             android:layout_width="128dp"
             android:layout_height="46dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginStart="36dp"
             android:layout_marginLeft="36dp"
+            android:layout_marginStart="36dp"
             android:layout_marginTop="8dp"
             android:text="@string/add_new"
             app:layout_constraintBottom_toTopOf="@+id/gridView"

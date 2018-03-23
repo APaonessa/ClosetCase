@@ -33,9 +33,12 @@ public class MainActivity extends AppCompatActivity {
     //when the manage closet button is clicked
     //method activates and screen changes from home to closet screen
     public void goToClosetScreen(View view){
-        //Intent intent = new Intent(this, ClosestScreen.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, ClosetScreen.class);
+        startActivity(intent);
     }
+
+
+
 }
 
 //The home page
