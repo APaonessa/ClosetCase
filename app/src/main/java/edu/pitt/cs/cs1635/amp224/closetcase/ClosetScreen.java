@@ -19,11 +19,12 @@ public class ClosetScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_closet_screen);
+        //getActionBar().setDisplayHomeAsUpEnabled(true);
 
         filter = findViewById(R.id.Filter);
         addNew = findViewById(R.id.AddNew);
         search = findViewById(R.id.searchView);
-        back = findViewById(R.id.imageButton);
+        //back = findViewById(R.id.imageButton);
 
     }
 

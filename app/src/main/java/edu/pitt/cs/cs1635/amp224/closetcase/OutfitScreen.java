@@ -21,12 +21,14 @@ public class OutfitScreen extends AppCompatActivity  { //Open class
     protected void onCreate(Bundle savedInstanceState) { //Open onCreate
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_outfit_screen);
+        //getActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         topLeft = findViewById(R.id.topLeftArrow);
         topRight = findViewById(R.id.topRightArrow);
         bottomLeft = findViewById(R.id.bottomLeftArrow);
         bottomRight = findViewById(R.id.bottomRightArrow);
-        up = findViewById(R.id.UpButton);
+        //up = findViewById(R.id.UpButton);
         complete = findViewById(R.id.CompleteButton);
         topImage = findViewById(R.id.imageViewTop);
         bottomImage = findViewById(R.id.imageViewBottom);

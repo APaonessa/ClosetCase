@@ -35,8 +35,9 @@ public class ClothingScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clothing_screen);
+        //getActionBar().setDisplayHomeAsUpEnabled(true);
         //
-        up = findViewById(R.id.upButton);
+        //up = findViewById(R.id.upButton);
         photo = findViewById(R.id.photoId);
         descriptorId = findViewById(R.id.articleId);
         color = findViewById(R.id.colorPaletteId);
