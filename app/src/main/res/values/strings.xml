@@ -1,10 +1,11 @@
 <resources>
     <string name="app_name">ClosetCase</string>
-    <string name= "slogan_name">Welcome to Closet Case, \n your personal stylist!</string>
-    <string name= "find_outfit">Find Outfit</string>
-    <string name= "build_outfit">Build Outfit</string>
+    <string name="slogan_name">Welcome to Closet Case, \n your personal stylist!</string>
+    <string name="find_outfit">Find Outfit</string>
+    <string name="build_outfit">Build Outfit</string>
     <string name="manage_closet">Manage Closet</string>
-    <string name="button">Button</string>
+    <string name="add_new">Add New</string>
+    <string name="filter">Filter</string>
     <string name="todo">TODO</string>
     <string name="Complete">Complete</string>
 </resources>
