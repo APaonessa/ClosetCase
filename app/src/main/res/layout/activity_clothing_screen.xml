@@ -18,43 +18,32 @@
 
     <ImageView
         android:id="@+id/photoId"
-        android:layout_width="153dp"
-        android:layout_height="154dp"
-        android:layout_marginLeft="24dp"
+        android:layout_width="221dp"
+        android:layout_height="194dp"
+        android:layout_marginLeft="80dp"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/upButton"
+        app:layout_constraintTop_toBottomOf="@+id/articleId"
         app:srcCompat="@drawable/camera_stock" />
 
     <EditText
         android:id="@+id/articleId"
         android:layout_width="168dp"
         android:layout_height="wrap_content"
-        android:layout_marginRight="24dp"
+        android:layout_marginLeft="54dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/photoId" />
-
-    <EditText
-        android:id="@+id/descriptorId"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        android:maxHeight="93dp"
-        android:text="is this actually necessary?"
-        app:layout_constraintEnd_toEndOf="@+id/articleId"
-        app:layout_constraintStart_toStartOf="@+id/articleId"
-        app:layout_constraintTop_toBottomOf="@+id/articleId" />
+        app:layout_constraintStart_toEndOf="@+id/upButton"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/colorId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
         android:text="Color"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/typeId"
@@ -84,10 +73,11 @@
         android:id="@+id/materialId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
         android:layout_marginTop="16dp"
         android:text="Material"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/photoId"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/patternId" />
 
     <ImageButton
@@ -95,8 +85,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/typeDropDownId"
-        app:layout_constraintStart_toStartOf="@+id/typeDropDownId"
+        app:layout_constraintBottom_toTopOf="@+id/articleDropDownId"
+        app:layout_constraintStart_toStartOf="@+id/articleDropDownId"
         app:layout_constraintTop_toTopOf="@+id/colorId"
         app:srcCompat="@color/colorPrimary" />
 
@@ -118,7 +108,7 @@
         app:layout_constraintStart_toStartOf="@+id/materialDropDownId" />
 
     <Spinner
-        android:id="@+id/typeDropDownId"
+        android:id="@+id/articleDropDownId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -130,7 +120,7 @@
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="75dp"
+        android:layout_marginLeft="72dp"
         android:text="Save"
         app:layout_constraintBaseline_toBaselineOf="@+id/deleteButton"
         app:layout_constraintStart_toStartOf="parent" />
@@ -139,8 +129,8 @@
         android:id="@+id/deleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:layout_marginRight="75dp"
+        android:layout_marginBottom="28dp"
+        android:layout_marginRight="72dp"
         android:text="Delete"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
