@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         //Intent intent = new Intent(this, ClosestScreen.class);
         //startActivity(intent);
     }
-
 }
 
 //The home page
