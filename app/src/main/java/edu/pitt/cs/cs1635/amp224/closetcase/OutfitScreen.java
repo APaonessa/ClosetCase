@@ -16,7 +16,9 @@ public class OutfitScreen extends AppCompatActivity  { //Open class
     Button complete;
     ImageView topImage;
     ImageView bottomImage;
-
+    int[] shirts = {R.drawable.redshirt, R.drawable.brownshirt, R.drawable.blueshirt, R.drawable.blackshirt};
+    int[] pants = {R.drawable.blackpants, R.drawable.brownpants, R.drawable.bluepants};
+    int position;
     @Override
     protected void onCreate(Bundle savedInstanceState) { //Open onCreate
         super.onCreate(savedInstanceState);
@@ -32,6 +34,11 @@ public class OutfitScreen extends AppCompatActivity  { //Open class
         topImage = findViewById(R.id.imageViewTop);
         bottomImage = findViewById(R.id.imageViewBottom);
         complete = findViewById(R.id.Complete);
+
+        position = 0;
+        topImage.setImageResource(shirts[position]);
+        bottomImage.setImageResource(pants[position]);
+
 
     }//Close onCreate
 } ///Close class
