@@ -11,10 +11,13 @@ import android.view.SubMenu;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.SearchView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
 public class ClosetScreen extends AppCompatActivity {
@@ -37,10 +40,19 @@ public class ClosetScreen extends AppCompatActivity {
         addNew = findViewById(R.id.AddNew);
         search = findViewById(R.id.searchView);
         //back = findViewById(R.id.imageButton);
-        gv = (GridView) findViewById(R.id.gridView);
+        //gv = (GridView) findViewById(R.id.gridView);
 
 
+        GridView gridview = (GridView) findViewById(R.id.gridView);
+        gridview.setAdapter(new ImageAdapter(this));
 
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v,
+                                    int position, long id) {
+                Toast.makeText(ClosetScreen.this, "" + position,
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
 
