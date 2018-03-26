@@ -1,5 +1,6 @@
 package edu.pitt.cs.cs1635.amp224.closetcase;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -100,7 +101,15 @@ public class OutfitScreen extends AppCompatActivity  { //Open class
         });
 
 
+
     }//Close onCreate
+
+
+    public void goToHome(View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
 } ///Close class
 
 /* Flipping through pictures means they need to be in the drawable folder.
