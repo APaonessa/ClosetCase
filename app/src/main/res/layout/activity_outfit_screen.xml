@@ -5,42 +5,59 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="edu.pitt.cs.cs1635.amp224.closetcase.OutfitScreen"
-    tools:layout_editor_absoluteY="81dp">
+    >
 
     <ImageButton
         android:id="@+id/topRightArrow"
         android:layout_width="57.5dp"
         android:layout_height="225dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CompleteButton"
+        app:layout_constraintStart_toEndOf="@+id/imageViewTop"
+        app:layout_constraintTop_toBottomOf="@+id/Complete"
         app:srcCompat="@android:drawable/ic_media_next" />
 
     <ImageButton
         android:id="@+id/topLeftArrow"
         android:layout_width="57.5dp"
         android:layout_height="225dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomLeftArrow"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewTop"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageViewTop"
+        app:layout_constraintTop_toBottomOf="@+id/Complete"
         app:srcCompat="@android:drawable/ic_media_previous" />
 
     <ImageButton
         android:id="@+id/bottomRightArrow"
         android:layout_width="57.5dp"
         android:layout_height="225dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageViewBottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageViewBottom"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewTop"
         app:srcCompat="@android:drawable/ic_media_next" />
 
     <ImageButton
         android:id="@+id/bottomLeftArrow"
-        android:layout_width="57dp"
-        android:layout_height="230dp"
+        android:layout_width="57.5dp"
+        android:layout_height="225dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewBottom"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageViewBottom"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewTop"
         app:srcCompat="@android:drawable/ic_media_previous" />
 
     <ImageView
@@ -51,46 +68,34 @@
         android:layout_marginTop="8dp"
         android:contentDescription="@string/todo"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewTop"
-        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@android:color/background_light" />
 
     <ImageView
         android:id="@+id/imageViewTop"
-        android:layout_width="227dp"
-        android:layout_height="206dp"
-        android:layout_marginTop="72dp"
+        android:layout_width="225dp"
+        android:layout_height="215dp"
+        android:layout_marginTop="8dp"
         android:contentDescription="TODO"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Complete"
         app:srcCompat="@android:color/background_light" />
 
-    <ImageButton
-        android:id="@+id/CompleteButton"
-        android:layout_width="43dp"
-        android:layout_height="47dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/checkbox_on_background" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="16dp"
+    <Button
+        android:id="@+id/Complete"
+        android:layout_width="328dp"
+        android:layout_height="41dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
         android:text="@string/Complete"
-        app:layout_constraintEnd_toStartOf="@+id/CompleteButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 
 </android.support.constraint.ConstraintLayout>

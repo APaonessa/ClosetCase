@@ -13,7 +13,7 @@ public class OutfitScreen extends AppCompatActivity  { //Open class
     ImageButton bottomLeft;
     ImageButton bottomRight;
     ImageButton up;
-    ImageButton complete;
+    Button complete;
     ImageView topImage;
     ImageView bottomImage;
 
@@ -28,10 +28,10 @@ public class OutfitScreen extends AppCompatActivity  { //Open class
         topRight = findViewById(R.id.topRightArrow);
         bottomLeft = findViewById(R.id.bottomLeftArrow);
         bottomRight = findViewById(R.id.bottomRightArrow);
-        //up = findViewById(R.id.UpButton);
-        complete = findViewById(R.id.CompleteButton);
+        //up = findViewById(R.id.UpButton)
         topImage = findViewById(R.id.imageViewTop);
         bottomImage = findViewById(R.id.imageViewBottom);
+        complete = findViewById(R.id.Complete);
 
     }//Close onCreate
 } ///Close class
