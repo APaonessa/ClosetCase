@@ -16,12 +16,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".OutfitScreen"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".ClosetScreen"
-           android:parentActivityName=".MainActivity" />
-        <activity android:name=".ClothingScreen"
-            android:parentActivityName=".ClosetScreen"/>
+        <activity
+            android:name=".OutfitScreen"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ClosetScreen"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ClothingScreen"
+            android:parentActivityName=".ClosetScreen" />
+        <activity android:name=".filter"></activity>
     </application>
 
 </manifest>

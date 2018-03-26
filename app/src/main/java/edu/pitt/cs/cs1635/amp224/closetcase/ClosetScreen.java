@@ -25,6 +25,8 @@ public class ClosetScreen extends AppCompatActivity {
     ImageButton back;
     GridView gv;
     ArrayList clothes = new ArrayList<>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +50,11 @@ public class ClosetScreen extends AppCompatActivity {
 
     public void goToAddNew(View view){
         Intent intent = new Intent(this, ClothingScreen.class);
+        startActivity(intent);
+    }
+
+    public void goToFilter(View view){
+        Intent intent = new Intent(this, filter.class);
         startActivity(intent);
     }
 
