@@ -2,6 +2,7 @@ package edu.pitt.cs.cs1635.amp224.closetcase;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -18,7 +19,10 @@ public class OutfitScreen extends AppCompatActivity  { //Open class
     ImageView bottomImage;
     int[] shirts = {R.drawable.redshirt, R.drawable.brownshirt, R.drawable.blueshirt, R.drawable.blackshirt};
     int[] pants = {R.drawable.blackpants, R.drawable.brownpants, R.drawable.bluepants};
-    int position;
+    int topPosition;
+    int bottomPosition;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) { //Open onCreate
         super.onCreate(savedInstanceState);
@@ -35,9 +39,65 @@ public class OutfitScreen extends AppCompatActivity  { //Open class
         bottomImage = findViewById(R.id.imageViewBottom);
         complete = findViewById(R.id.Complete);
 
-        position = 0;
-        topImage.setImageResource(shirts[position]);
-        bottomImage.setImageResource(pants[position]);
+        topPosition = 0;
+        bottomPosition = 0;
+
+        topImage.setImageResource(shirts[topPosition]);
+        bottomImage.setImageResource(pants[bottomPosition]);
+
+        topLeft.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v) {
+                if(topPosition == 0) {
+                    topPosition = 3;
+                    topImage.setImageResource(shirts[topPosition]);
+                }
+                else{
+                    topPosition = topPosition -1;
+                    topImage.setImageResource(shirts[topPosition]);
+                }
+            }
+        });
+
+        topRight.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                if(topPosition==3){
+                    topPosition = 0;
+                    topImage.setImageResource(shirts[topPosition]);
+                }
+                else{
+                    topPosition = topPosition + 1;
+                    topImage.setImageResource(shirts[topPosition]);
+                }
+            }
+        });
+
+        bottomLeft.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                if(bottomPosition == 0){
+                    bottomPosition = 2;
+                    bottomImage.setImageResource(pants[bottomPosition]);
+                }
+                else{
+                    bottomPosition = bottomPosition - 1;
+                    bottomImage.setImageResource(pants[bottomPosition]);
+                }
+            }
+        });
+
+
+        bottomRight.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                if(bottomPosition == 2){
+                    bottomPosition = 0;
+                    bottomImage.setImageResource(pants[bottomPosition]);
+                }
+                else{
+                    bottomPosition = bottomPosition + 1;
+                    bottomImage.setImageResource(pants[bottomPosition]);
+                }
+            }
+        });
 
 
     }//Close onCreate
