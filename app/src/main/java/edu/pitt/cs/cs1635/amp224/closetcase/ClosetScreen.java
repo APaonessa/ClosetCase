@@ -71,4 +71,9 @@ public class ClosetScreen extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goToOutfitScreen(View view){
+        Intent intent = new Intent(this, OutfitScreen.class);
+        startActivity(intent);
+    }
+
 }
