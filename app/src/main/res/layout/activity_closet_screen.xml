@@ -10,19 +10,18 @@
     <GridView
         android:id="@+id/gridView"
         android:layout_width="383dp"
-        android:layout_height="408dp"
-        android:layout_marginStart="4dp"
+        android:layout_height="413dp"
         android:layout_marginLeft="4dp"
-        android:gravity="center"
-        android:columnWidth="1000dp"
-        android:numColumns="auto_fit"
-        android:verticalSpacing="24dp"
-        android:horizontalSpacing="10dp"
-        android:stretchMode="spacingWidthUniform"
+        android:layout_marginTop="8dp"
+        android:horizontalSpacing="5dp"
+        android:numColumns="3"
+        android:verticalSpacing="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView"
+        app:layout_constraintVertical_bias="0.901" />
 
     <SearchView
         android:id="@+id/searchView"

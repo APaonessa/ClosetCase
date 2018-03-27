@@ -1,5 +1,6 @@
 package edu.pitt.cs.cs1635.amp224.closetcase;
 
+import android.app.ActionBar;
 import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -13,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.SearchView;
@@ -53,7 +55,6 @@ public class ClosetScreen extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
         });
-
 
 
 
