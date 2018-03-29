@@ -116,6 +116,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="72dp"
         android:text="Save"
+        android:onClick="goToClosetScreen"
         app:layout_constraintBaseline_toBaselineOf="@+id/deleteButton"
         app:layout_constraintStart_toStartOf="parent" />
 

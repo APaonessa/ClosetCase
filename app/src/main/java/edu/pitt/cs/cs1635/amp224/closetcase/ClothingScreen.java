@@ -1,7 +1,9 @@
 package edu.pitt.cs.cs1635.amp224.closetcase;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -47,5 +49,11 @@ public class ClothingScreen extends AppCompatActivity {
         save = findViewById(R.id.saveButton);
         delete = findViewById(R.id.deleteButton);
 
+    }
+
+
+    public void goToClosetScreen(View view){
+        Intent intent = new Intent(this, ClosetScreen.class);
+        startActivity(intent);
     }
 }
