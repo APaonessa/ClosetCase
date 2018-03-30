@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -30,9 +31,9 @@ public class ClothingScreen extends AppCompatActivity {
       ^^ these textViews should never change
      */
     ImageButton color;
+    Spinner article;//-type
     Spinner material;
     Spinner pattern;
-    Spinner article;
     Button save;
     Button delete;
     AlertDialog deleteClothing;
@@ -47,9 +48,13 @@ public class ClothingScreen extends AppCompatActivity {
         photo = findViewById(R.id.photoId);
         descriptorId = findViewById(R.id.articleId);
         color = findViewById(R.id.colorPaletteId);
-        material = findViewById(R.id.materialDropDownId);
-        pattern = findViewById(R.id.patternDropDownId);
+        //Colors - Black Red Blue Brown
         article = findViewById(R.id.articleDropDownId);
+        //Spinner - Shirt Pants
+        material = findViewById(R.id.materialDropDownId);
+        //Spinner -
+        pattern = findViewById(R.id.patternDropDownId);
+        //Spinner -
         save = findViewById(R.id.saveButton);
         delete = findViewById(R.id.deleteButton);
 

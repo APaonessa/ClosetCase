@@ -21,6 +21,21 @@
     <string name="Brown">Brown</string>
     <string name="Accept">Accept</string>
 
+    <!--  either need to do a spinner for colors or get a color palette selector-->
+    <string-array name="articleArray">
+        <item>Pants</item>
+        <item>Shirt</item>
+    </string-array>
+    <string-array name="patternArray">
+        <item>Solid</item>
+        <item>Not Solid</item>
+    </string-array>
+    <string-array name="materialArray">
+        <item>Cotton</item>
+        <item>Denim</item>
+    </string-array>
+
+
     <string name="Select">Select</string>
 
     <!-- Strings for the Delete Clothing Button -->
