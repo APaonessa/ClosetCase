@@ -1,7 +1,9 @@
 package edu.pitt.cs.cs1635.amp224.closetcase;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import edu.pitt.cs.cs1635.amp224.closetcase.R;
 
@@ -32,6 +35,7 @@ public class ClothingScreen extends AppCompatActivity {
     Spinner article;
     Button save;
     Button delete;
+    AlertDialog deleteClothing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +53,36 @@ public class ClothingScreen extends AppCompatActivity {
         save = findViewById(R.id.saveButton);
         delete = findViewById(R.id.deleteButton);
 
+
     }
 
 
     public void goToClosetScreen(View view){
         Intent intent = new Intent(this, ClosetScreen.class);
         startActivity(intent);
+    }
+
+    public void onDelete(View view){
+        AlertDialog deleteClothing = new AlertDialog.Builder(ClothingScreen.this).create();
+        deleteClothing.setTitle(R.string.Delete);
+        deleteClothing.setMessage("Are you sure you want to delete this item?");
+
+        deleteClothing.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+        deleteClothing.setButton(AlertDialog.BUTTON_POSITIVE, "Delete",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+        deleteClothing.show();
+
+
     }
 }

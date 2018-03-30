@@ -127,6 +127,7 @@
         android:layout_marginBottom="28dp"
         android:layout_marginRight="72dp"
         android:text="Delete"
+        android:onClick="onDelete"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
