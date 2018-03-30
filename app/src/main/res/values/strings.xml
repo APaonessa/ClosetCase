@@ -23,5 +23,10 @@
 
     <string name="Select">Select</string>
 
+    <!-- Strings for the Delete Clothing Button -->
+    <string name="DeleteQuestion">Are you sure you want to delete this?</string>
+    <string name="Delete">Delete</string>
+    <string name="Cancel">Cancel</string>
+
 
 </resources>
