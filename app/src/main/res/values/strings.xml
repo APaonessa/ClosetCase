@@ -21,14 +21,20 @@
     <string name="Brown">Brown</string>
     <string name="Accept">Accept</string>
 
-    <!--  either need to do a spinner for colors or get a color palette selector-->
+    <string-array name="colorArray">
+        <item></item>
+        <item>Black</item>
+        <item>Red</item>
+        <item>Blue</item>
+        <item>Brown</item>
+    </string-array>
     <string-array name="articleArray">
         <item>Pants</item>
         <item>Shirt</item>
     </string-array>
     <string-array name="patternArray">
         <item>Solid</item>
-        <item>Not Solid</item>
+        <item>Plaid</item>
     </string-array>
     <string-array name="materialArray">
         <item>Cotton</item>

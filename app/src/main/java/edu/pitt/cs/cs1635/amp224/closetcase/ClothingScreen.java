@@ -30,7 +30,7 @@ public class ClothingScreen extends AppCompatActivity {
                 typeId      materialId
       ^^ these textViews should never change
      */
-    ImageButton color;
+    Spinner color;
     Spinner article;//-type
     Spinner material;
     Spinner pattern;
@@ -47,18 +47,37 @@ public class ClothingScreen extends AppCompatActivity {
         //up = findViewById(R.id.upButton);
         photo = findViewById(R.id.photoId);
         descriptorId = findViewById(R.id.articleId);
-        color = findViewById(R.id.colorPaletteId);
+        // Drop Down Lists
+        color = findViewById(R.id.colorDropDownId);
         //Colors - Black Red Blue Brown
+        ArrayAdapter<CharSequence> colorAdapter = ArrayAdapter.createFromResource(this,
+                R.array.colorArray, android.R.layout.simple_spinner_item);
+        colorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        color.setAdapter(colorAdapter);
+        // -----
         article = findViewById(R.id.articleDropDownId);
         //Spinner - Shirt Pants
+        ArrayAdapter<CharSequence> articleAdapter = ArrayAdapter.createFromResource(this,
+                R.array.articleArray, android.R.layout.simple_spinner_item);
+        articleAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        article.setAdapter(articleAdapter);
+        // -----
         material = findViewById(R.id.materialDropDownId);
-        //Spinner -
+        //Spinner - Cotton Denim
+        ArrayAdapter<CharSequence> materialAdapter = ArrayAdapter.createFromResource(this,
+                R.array.articleArray, android.R.layout.simple_spinner_item);
+        materialAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        material.setAdapter(materialAdapter);
+        // -----
         pattern = findViewById(R.id.patternDropDownId);
-        //Spinner -
+        //Spinner - Solid Plaid
+        ArrayAdapter<CharSequence> patternAdapter = ArrayAdapter.createFromResource(this,
+                R.array.patternArray, android.R.layout.simple_spinner_item);
+        patternAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        pattern.setAdapter(patternAdapter);
+        //
         save = findViewById(R.id.saveButton);
         delete = findViewById(R.id.deleteButton);
-
-
     }
 
 
