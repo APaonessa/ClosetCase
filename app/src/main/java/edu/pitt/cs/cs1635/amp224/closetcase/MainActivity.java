@@ -1,16 +1,22 @@
 package edu.pitt.cs.cs1635.amp224.closetcase;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
 
     Button findOutfit;
     Button buildOutfit;
     Button manageCloset;
+    public final static String KEY_EXTRA_CONTACT_ID = "KEY_EXTRA_CONATACT_ID";
+    private ListView listView;
+    DBHelper dbHelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +26,15 @@ public class MainActivity extends AppCompatActivity {
         findOutfit = findViewById(R.id.button);
         buildOutfit = findViewById(R.id.button2);
         manageCloset = findViewById(R.id.button3);
+
+        dbHelper = new DBHelper(this);
+
+        final Cursor cursor = dbHelper.getAllClothes();
+        String[] columns = new String[]{
+                DBHelper.CLOTHES_COLUMN_ID,
+                DBHelper.CLOTHES_COLUMN_NAME
+        };
+
 
     }
 

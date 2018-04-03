@@ -2,6 +2,7 @@ package edu.pitt.cs.cs1635.amp224.closetcase;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,7 @@ import edu.pitt.cs.cs1635.amp224.closetcase.R;
 
 public class ClothingScreen extends AppCompatActivity {
 
+    private DBHelper dbHelper;
     ImageButton up;
     ImageView photo;
     EditText descriptorId;
@@ -38,6 +40,8 @@ public class ClothingScreen extends AppCompatActivity {
     Button delete;
     AlertDialog deleteClothing;
 
+    int clothesID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,10 +49,16 @@ public class ClothingScreen extends AppCompatActivity {
         //getActionBar().setDisplayHomeAsUpEnabled(true);
         //
         //up = findViewById(R.id.upButton);
+
+        clothesID = getIntent().getIntExtra(MainActivity.KEY_EXTRA_CONTACT_ID, 0);
+
         photo = findViewById(R.id.photoId);
         descriptorId = findViewById(R.id.articleId);
         // Drop Down Lists
         color = findViewById(R.id.colorDropDownId);
+
+        dbHelper = new DBHelper(this);
+
         //Colors - Black Red Blue Brown
         ArrayAdapter<CharSequence> colorAdapter = ArrayAdapter.createFromResource(this,
                 R.array.colorArray, android.R.layout.simple_spinner_item);
@@ -78,15 +88,37 @@ public class ClothingScreen extends AppCompatActivity {
         //
         save = findViewById(R.id.saveButton);
         delete = findViewById(R.id.deleteButton);
+
+        if (clothesID > 0) {
+            save.setVisibility(View.GONE);
+
+            Cursor rs = dbHelper.getClothes(clothesID);
+            rs.moveToFirst();
+            String clothesName = rs.getString(rs.getColumnIndex(DBHelper.CLOTHES_COLUMN_NAME));
+            String clothesType = rs.getString(rs.getColumnIndex(DBHelper.CLOTHES_COLUMN_TYPE));
+            String clothesColor = rs.getString(rs.getColumnIndex(DBHelper.CLOTHES_COLUMN_COLOR));
+            String clothesMaterial = rs.getString(rs.getColumnIndex(DBHelper.CLOTHES_COLUMN_MATERIAL));
+            String clothesPattern = rs.getString(rs.getColumnIndex(DBHelper.CLOTHES_COLUMN_PATTERN));
+
+            if (!rs.isClosed()) {
+                rs.close();
+            }
+
+
+        }
+
     }
 
 
-    public void goToClosetScreen(View view){
+    //Save button
+    public void goToClosetScreen(View view) {
         Intent intent = new Intent(this, ClosetScreen.class);
         startActivity(intent);
+        persistClothes();
+        return;
     }
 
-    public void onDelete(View view){
+    public void onDelete(View view) {
         AlertDialog deleteClothing = new AlertDialog.Builder(ClothingScreen.this).create();
         deleteClothing.setTitle(R.string.Delete);
         deleteClothing.setMessage("Are you sure you want to delete this item?");
@@ -95,7 +127,10 @@ public class ClothingScreen extends AppCompatActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
+                        dbHelper.deleteClothes(clothesID);
+                        Toast.makeText(getApplicationContext(), "Delete Successful", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), ClosetScreen.class);
+                        startActivity(intent);
                     }
                 });
         deleteClothing.setButton(AlertDialog.BUTTON_POSITIVE, "Delete",
@@ -106,7 +141,40 @@ public class ClothingScreen extends AppCompatActivity {
                     }
                 });
         deleteClothing.show();
+        return;
 
 
     }
+
+
+
+
+
+    public void persistClothes() {
+        if(clothesID > 0) {
+            if(dbHelper.updateClothes(clothesID, descriptorId.getText().toString(), article.getSelectedItem().toString(), color.getSelectedItem().toString(),
+                    material.getSelectedItem().toString(), pattern.getSelectedItem().toString())) {
+                Toast.makeText(getApplicationContext(), "Closet Update Successful", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), ClosetScreen.class);
+                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+            else {
+                Toast.makeText(getApplicationContext(), "Closet Update Failed", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else {
+            if(dbHelper.insertClothes(descriptorId.getText().toString(), article.getSelectedItem().toString(), color.getSelectedItem().toString(),
+                    material.getSelectedItem().toString(), pattern.getSelectedItem().toString())) {
+                Toast.makeText(getApplicationContext(), "Clothes Inserted", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                Toast.makeText(getApplicationContext(), "Could not Insert clothes", Toast.LENGTH_SHORT).show();
+            }
+            Intent intent = new Intent(getApplicationContext(), ClosetScreen.class);
+            //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
+    }
 }
+
