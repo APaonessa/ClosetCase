@@ -6,6 +6,10 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 /**
  * Created by abipa on 4/2/2018.
@@ -95,10 +99,41 @@ public class DBHelper extends SQLiteOpenHelper{
         return res;
     }
 
-    public Cursor getAllClothes() {
+    public ArrayList<Clothes> getAllClothes() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery( "SELECT * FROM " + CLOTHES_TABLE_NAME, null );
-        return res;
+        ArrayList<Clothes> clothes = new ArrayList<Clothes>();
+        res.moveToFirst();
+
+        if(res != null){
+            while (res.moveToNext()){
+                int id = res.getInt(res.getColumnIndex(CLOTHES_COLUMN_ID));
+                String name = res.getString(res.getColumnIndex(CLOTHES_COLUMN_NAME));
+                String type = res.getString(res.getColumnIndex(CLOTHES_COLUMN_TYPE));
+                String pattern = res.getString(res.getColumnIndex(CLOTHES_COLUMN_PATTERN));
+                String material = res.getString(res.getColumnIndex(CLOTHES_COLUMN_MATERIAL));
+
+                Clothes cts = new Clothes();
+                cts.setId(id);
+                cts.setName(name);
+                cts.setType(type);
+                cts.setPattern(pattern);
+                cts.setMaterial(material);
+
+                Log.v("DBHELPER: ", "ID: " + id);
+                Log.v("DBHELPER: ", "Name: " + name);
+                Log.v("DBHELPER: ", "Type: " + type);
+                Log.v("DBHELPER: ", "Pattern: " + pattern);
+                Log.v("DBHELPER: ", "Material: " + material);
+                clothes.add(cts);
+
+
+            }
+        }
+        else{
+
+        }
+        return clothes;
     }
 
 }

@@ -29,11 +29,11 @@ public class MainActivity extends AppCompatActivity {
 
         dbHelper = new DBHelper(this);
 
-        final Cursor cursor = dbHelper.getAllClothes();
+       /* final Cursor cursor = dbHelper.getAllClothes();
         String[] columns = new String[]{
                 DBHelper.CLOTHES_COLUMN_ID,
                 DBHelper.CLOTHES_COLUMN_NAME
-        };
+        };*/
 
 
     }

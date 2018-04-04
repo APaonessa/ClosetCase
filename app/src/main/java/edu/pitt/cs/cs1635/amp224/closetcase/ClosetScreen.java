@@ -3,6 +3,7 @@ package edu.pitt.cs.cs1635.amp224.closetcase;
 import android.app.ActionBar;
 import android.content.ClipData;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,9 +28,11 @@ public class ClosetScreen extends AppCompatActivity {
     Button filter;
     Button addNew;
     SearchView search;
-    ImageButton back;
-    GridView gv;
+    //ImageButton back;
+    //GridView gridView;
     ArrayList clothes = new ArrayList<>();
+    DBHelper dbHelper;
+    String allClothes;
 
 
     @Override
@@ -44,21 +47,35 @@ public class ClosetScreen extends AppCompatActivity {
         //back = findViewById(R.id.imageButton);
         //gv = (GridView) findViewById(R.id.gridView);
 
+        dbHelper = new DBHelper(this);
+        ArrayList<Clothes> clothesList;
+        clothesList = new ArrayList<Clothes>();
+        MyAdapter adapter;
 
-        GridView gridview = (GridView) findViewById(R.id.gridView);
-        gridview.setAdapter(new ImageAdapter(this));
 
-        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        GridView gridView = (GridView) findViewById(R.id.gridView);
+        clothesList = dbHelper.getAllClothes();
+
+        adapter = new MyAdapter(ClosetScreen.this, clothesList);
+        gridView.setAdapter(adapter);
+
+
+        /*
+        gridView.setAdapter(new ImageAdapter(this));
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
                 Toast.makeText(ClosetScreen.this, "" + position,
                         Toast.LENGTH_SHORT).show();
             }
-        });
-
+        });*/
 
 
     }
+
+
 
 
     public void goToAddNew(View view){

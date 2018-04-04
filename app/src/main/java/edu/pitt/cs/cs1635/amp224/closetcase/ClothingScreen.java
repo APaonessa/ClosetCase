@@ -57,7 +57,7 @@ public class ClothingScreen extends AppCompatActivity {
         // Drop Down Lists
         color = findViewById(R.id.colorDropDownId);
 
-        dbHelper = new DBHelper(this);
+        //dbHelper = new DBHelper(this);
 
         //Colors - Black Red Blue Brown
         ArrayAdapter<CharSequence> colorAdapter = ArrayAdapter.createFromResource(this,
@@ -89,23 +89,7 @@ public class ClothingScreen extends AppCompatActivity {
         save = findViewById(R.id.saveButton);
         delete = findViewById(R.id.deleteButton);
 
-        if (clothesID > 0) {
-            save.setVisibility(View.GONE);
 
-            Cursor rs = dbHelper.getClothes(clothesID);
-            rs.moveToFirst();
-            String clothesName = rs.getString(rs.getColumnIndex(DBHelper.CLOTHES_COLUMN_NAME));
-            String clothesType = rs.getString(rs.getColumnIndex(DBHelper.CLOTHES_COLUMN_TYPE));
-            String clothesColor = rs.getString(rs.getColumnIndex(DBHelper.CLOTHES_COLUMN_COLOR));
-            String clothesMaterial = rs.getString(rs.getColumnIndex(DBHelper.CLOTHES_COLUMN_MATERIAL));
-            String clothesPattern = rs.getString(rs.getColumnIndex(DBHelper.CLOTHES_COLUMN_PATTERN));
-
-            if (!rs.isClosed()) {
-                rs.close();
-            }
-
-
-        }
 
     }
 
@@ -147,9 +131,6 @@ public class ClothingScreen extends AppCompatActivity {
     }
 
 
-
-
-
     public void persistClothes() {
         if(clothesID > 0) {
             if(dbHelper.updateClothes(clothesID, descriptorId.getText().toString(), article.getSelectedItem().toString(), color.getSelectedItem().toString(),
@@ -176,5 +157,8 @@ public class ClothingScreen extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+
+
 }
 

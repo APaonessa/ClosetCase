@@ -13,8 +13,9 @@ import android.widget.ImageView;
  */
 
 public class ImageAdapter extends BaseAdapter {
-
+        private DBHelper dbHelper;
         private Context mContext;
+        int clothesID;
 
         public ImageAdapter(Context c) {
             mContext = c;
@@ -48,6 +49,7 @@ public class ImageAdapter extends BaseAdapter {
             imageView.setImageResource(mThumbIds[position]);
             return imageView;
         }
+
 
         // references to our images
         private Integer[] mThumbIds = {
