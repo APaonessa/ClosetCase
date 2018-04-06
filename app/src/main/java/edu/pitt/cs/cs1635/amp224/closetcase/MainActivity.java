@@ -8,11 +8,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnCLickListener {
 
     Button findOutfit;
     Button buildOutfit;
     Button manageCloset;
+    
+    Button foHelpButton;
+    Button boHelpButton;
+    Button mcHelpButton;
+    
     public final static String KEY_EXTRA_CONTACT_ID = "KEY_EXTRA_CONATACT_ID";
     private ListView listView;
     DBHelper dbHelper;
@@ -26,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
         findOutfit = findViewById(R.id.button);
         buildOutfit = findViewById(R.id.button2);
         manageCloset = findViewById(R.id.button3);
+        
+        foHelpButton = findViewById(R.id.button4);
+        boHelpButton = findViewById(R.id.button5);
+        mcHelpButton = findViewById(R.id.button6);
 
         dbHelper = new DBHelper(this);
 
@@ -38,6 +47,35 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onClick(View v){
+        switch (v.getId()){
+            case R.id.button4:
+                new FancyShowCaseView.Builder(this)
+                        .title("Find Outfit Button generates a custom outfit right away for you! For a quick option, click 'Find Outfit' button!")
+                        .focusOn(v)
+                        .build()
+                        .show();
+                break;
+            case R.id.button5:
+                new FancyShowCaseView.Builder(this)
+                        .title("Build Outfit Button lets you take control and create your own outfit and look through options of possible outfits! Want to decide on your own? Click 'Build Outfit' button!")
+                        .focusOn(v)
+                        .build()
+                        .show();
+                break;
+            case R.id.button6:
+                new FancyShowCaseView.Builder(this)
+                        .title("Manage Closet Button takes you straight to your closet where all your pieces you stored into the app are located!")
+                        .focusOn(v)
+                        .build()
+                        .show();
+                break;
+
+        }
+
+    }
+    
     //when find outfit and build outfit buttons are clicked, this method "activates"
     //and the screen changes from home to outfit screen
     public void goToOutfitScreen(View view){
