@@ -8,6 +8,7 @@
     <string name="filter">Filter</string>
     <string name="todo">TODO</string>
     <string name="Complete">Complete</string>
+    <string name="help_question">"?"</string>
 
     <!-- Filter Fragment Strings -->
     <string name="Filter_Fragment">Filter</string>
