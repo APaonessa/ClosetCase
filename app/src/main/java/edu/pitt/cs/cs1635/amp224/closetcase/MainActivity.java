@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
-public class MainActivity extends AppCompatActivity implements View.OnCLickListener {
+import me.toptas.fancyshowcase.FancyShowCaseView;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button findOutfit;
     Button buildOutfit;
