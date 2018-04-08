@@ -49,14 +49,14 @@ public class MainActivity extends AppCompatActivity{
                 DBHelper.CLOTHES_COLUMN_NAME
         };*/
 
-       boHelpButton.setOnClickListener(new View.OnClickListener(){
+       foHelpButton.setOnClickListener(new View.OnClickListener(){
            @Override
            public void onClick(View view){
                showTooltip1(new ViewPosition(view));
            }
        });
 
-        foHelpButton.setOnClickListener(new View.OnClickListener(){
+        boHelpButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 showTooltip2(new ViewPosition(view));
