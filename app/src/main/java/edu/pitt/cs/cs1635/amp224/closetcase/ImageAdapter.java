@@ -1,12 +1,17 @@
 package edu.pitt.cs.cs1635.amp224.closetcase;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
+
+import java.util.ArrayList;
 
 /**
  * Created by abipa on 3/26/2018.
@@ -15,10 +20,22 @@ import android.widget.ImageView;
 public class ImageAdapter extends BaseAdapter {
         private DBHelper dbHelper;
         private Context mContext;
-        int clothesID;
+        private SharedPreferences sharedPreferences;
+        private String picturePathKey;
+        private ArrayList<Clothes> clothesList = new ArrayList<Clothes>();
+        private int clothesID;
 
-        public ImageAdapter(Context c) {
+        public ImageAdapter(Context c, ArrayList<Clothes> clothesList) {
             mContext = c;
+            this.clothesList = clothesList;
+        }
+
+        public void setSharedPreferences(SharedPreferences sharedPreferences) {
+            this.sharedPreferences = sharedPreferences;
+        }
+
+        public void setPicturePathKey(String picturePathKey) {
+            this.picturePathKey = picturePathKey;
         }
 
         public int getCount() {
@@ -46,7 +63,15 @@ public class ImageAdapter extends BaseAdapter {
                 imageView = (ImageView) convertView;
             }
 
-            imageView.setImageResource(mThumbIds[position]);
+            String path = sharedPreferences.getString(picturePathKey + clothesList.get(position).getId(), "");
+            Log.v("tester", "getView path: " + path);
+            Drawable pic = Drawable.createFromPath(path);
+
+            if (pic != null) {
+                imageView.setImageDrawable(pic);
+            } else {
+                imageView.setImageResource(R.drawable.camera_stock);
+            }
             return imageView;
         }
 

@@ -67,4 +67,9 @@ public class Clothes{
          this.material = material;
      }
 
+     @Override
+    public String toString() {
+         return String.format("%s { id: %d, name: %s, color: %s, type: %s, pattern: %s, material: %s }", super.toString(), id, name, color, type, pattern, material);
+     }
+
 }

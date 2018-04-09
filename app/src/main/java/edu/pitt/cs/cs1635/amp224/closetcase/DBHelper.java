@@ -157,10 +157,10 @@ public class DBHelper extends SQLiteOpenHelper{
 
     if(res.moveToFirst()){
         do{
-            ArrayList<Clothes> cts = new ArrayList<Clothes>();
 
             int id = res.getInt(res.getColumnIndex(CLOTHES_COLUMN_ID));
             String name = res.getString(res.getColumnIndex(CLOTHES_COLUMN_NAME));
+            String color = res.getString(res.getColumnIndex(CLOTHES_COLUMN_COLOR));
             String type = res.getString(res.getColumnIndex(CLOTHES_COLUMN_TYPE));
             String pattern = res.getString(res.getColumnIndex(CLOTHES_COLUMN_PATTERN));
             String material = res.getString(res.getColumnIndex(CLOTHES_COLUMN_MATERIAL));
@@ -168,12 +168,13 @@ public class DBHelper extends SQLiteOpenHelper{
 
             newClothes.setId(id);
             newClothes.setName(name);
+            newClothes.setColor(color);
             newClothes.setType(type);
             newClothes.setPattern(pattern);
             newClothes.setMaterial(material);
 
 
-            cts.add(newClothes);
+            clothes.add(newClothes);
         }while(res.moveToNext());
     }
         res.close();

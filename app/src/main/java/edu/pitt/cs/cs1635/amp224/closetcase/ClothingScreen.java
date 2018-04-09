@@ -165,9 +165,6 @@ public class ClothingScreen extends AppCompatActivity {
                     }
                 });
         deleteClothing.show();
-        return;
-
-
     }
 
 
@@ -227,10 +224,10 @@ public class ClothingScreen extends AppCompatActivity {
     {
         String fileName = "picture" + (clothesID);
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        //Log.d("ContentValues", Environment.DIRECTORY_PICTURES);
+        Log.d("ContentValues", Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(fileName, ".jpg", storageDir);
         picture_path = image.getAbsolutePath();
-        //Log.d("ContentValues", picture_path);
+        Log.d("ContentValues", picture_path);
         return image;
     }
 
