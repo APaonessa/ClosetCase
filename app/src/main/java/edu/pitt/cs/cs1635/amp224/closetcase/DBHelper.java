@@ -49,31 +49,33 @@ public class DBHelper extends SQLiteOpenHelper{
 
 
 
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
-        db.execSQL("DROP TABLE IF EXISTS " + CLOTHES_TABLE_NAME);
+       db.execSQL("DROP TABLE IF EXISTS " + CLOTHES_TABLE_NAME);
         onCreate(db);
     }
 
-    public boolean insertClothes(Integer id, String name, String type, String color, String material, String pattern) {
+    public boolean insertClothes( String name, String type, String color, String material, String pattern) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(CLOTHES_COLUMN_ID, id);
+        //contentValues.put(CLOTHES_COLUMN_ID, id);
         contentValues.put(CLOTHES_COLUMN_NAME, name);
         contentValues.put(CLOTHES_COLUMN_TYPE, type);
         contentValues.put(CLOTHES_COLUMN_COLOR, color);
         contentValues.put(CLOTHES_COLUMN_MATERIAL, material);
         contentValues.put(CLOTHES_COLUMN_PATTERN, pattern);
 
+
         db.insert(CLOTHES_TABLE_NAME, null, contentValues) ;
-        Log.v("INSERTING INTO DB...", id.toString());
+        Log.v("INSERTING INTO DB...", CLOTHES_COLUMN_ID);
         Log.v("INSERTING INTO DB...", name);
         Log.v("INSERTING INTO DB...", type);
         Log.v("INSERTING INTO DB...", color);
         Log.v("INSERTING INTO DB...", material);
         Log.v("INSERTING INTO DB.", pattern);
         db.close();
-        id = id++;
+
         return true;
     }
 
@@ -94,6 +96,7 @@ public class DBHelper extends SQLiteOpenHelper{
         contentValues.put(CLOTHES_COLUMN_MATERIAL, material);
         contentValues.put(CLOTHES_COLUMN_PATTERN, pattern);
         db.update(CLOTHES_TABLE_NAME, contentValues, CLOTHES_COLUMN_ID + " = ? ", new String[] { Integer.toString(id) } );
+        db.close();
         return true;
     }
 
@@ -108,6 +111,8 @@ public class DBHelper extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + CLOTHES_TABLE_NAME + " WHERE " +
                 CLOTHES_COLUMN_ID + "=?", new String[]{Integer.toString(id)});
+        res.close();
+        db.close();
         return res;
     }
 

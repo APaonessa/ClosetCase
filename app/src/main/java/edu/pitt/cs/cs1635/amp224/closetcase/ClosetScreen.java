@@ -49,6 +49,7 @@ public class ClosetScreen extends AppCompatActivity {
 
 
         dbHelper = new DBHelper(this);
+        dbHelper.getReadableDatabase();
         //clothes = new ArrayList<Clothes>();
 
 
@@ -103,7 +104,7 @@ public class ClosetScreen extends AppCompatActivity {
         Drawable pic;
         ImageView image = null;
 
-        for(int i = 1; i < clothes.size(); i++)
+        for(int i = 0; i < clothes.size(); i++)
         {
             path = pref.getString(getString(R.string.picture_path_key) + clothes.get(i).getId(), "");
             pic = Drawable.createFromPath(path);

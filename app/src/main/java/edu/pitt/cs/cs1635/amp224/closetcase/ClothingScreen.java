@@ -56,6 +56,7 @@ public class ClothingScreen extends AppCompatActivity {
     AlertDialog deleteClothing;
 
     int clothesID;
+    public int _id = 0;
 
     //int pic_res_id;
    // int num_pictures;
@@ -112,20 +113,8 @@ public class ClothingScreen extends AppCompatActivity {
 
         dbHelper = new DBHelper(this);
 
-        if(clothesID > 0){
-            save.setVisibility(View.GONE);
 
-            Cursor rs = dbHelper.getClothes(clothesID);
-            rs.moveToFirst();
-            String clothesName = rs.getString(rs.getColumnIndex(DBHelper.CLOTHES_COLUMN_NAME));
-            String clothesType = rs.getString(rs.getColumnIndex(DBHelper.CLOTHES_COLUMN_TYPE));
-            String clothesColor = rs.getString(rs.getColumnIndex(DBHelper.CLOTHES_COLUMN_COLOR));
-            String clothesPattern = rs.getString(rs.getColumnIndex(DBHelper.CLOTHES_COLUMN_PATTERN));
-            String clothesMaterial = rs.getString(rs.getColumnIndex(DBHelper.CLOTHES_COLUMN_MATERIAL));
-            if(!rs.isClosed()){
-                //rs.close();
-            }
-        }
+
 
     }
 
@@ -184,7 +173,7 @@ public class ClothingScreen extends AppCompatActivity {
 
     public void persistClothes() {
         if(clothesID > 0) {
-            if(dbHelper.updateClothes(clothesID, descriptorId.getText().toString(), article.getSelectedItem().toString(), color.getSelectedItem().toString(),
+            if(dbHelper.updateClothes(_id, descriptorId.getText().toString(), article.getSelectedItem().toString(), color.getSelectedItem().toString(),
                     material.getSelectedItem().toString(), pattern.getSelectedItem().toString())) {
                 Toast.makeText(getApplicationContext(), "Closet Update Successful", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), ClosetScreen.class);
@@ -207,6 +196,7 @@ public class ClothingScreen extends AppCompatActivity {
             //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
+        _id++;
     }
 
     public void launchCamera(View view)
