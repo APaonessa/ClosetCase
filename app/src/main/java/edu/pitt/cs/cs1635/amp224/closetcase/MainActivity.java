@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+
+import java.util.ArrayList;
 
 import ru.dimorinny.showcasecard.ShowCaseView;
 import ru.dimorinny.showcasecard.position.ShowCasePosition;
@@ -19,7 +22,7 @@ public class MainActivity extends AppCompatActivity{
     Button findOutfit;
     Button buildOutfit;
     Button manageCloset;
-    public final static String KEY_EXTRA_CONTACT_ID = "KEY_EXTRA_CONATACT_ID";
+    public final static String KEY_EXTRA_CONTACT_ID = "KEY_EXTRA_CONTACT_ID";
     private ListView listView;
     DBHelper dbHelper;
 
@@ -49,6 +52,10 @@ public class MainActivity extends AppCompatActivity{
                 DBHelper.CLOTHES_COLUMN_ID,
                 DBHelper.CLOTHES_COLUMN_NAME
         };*/
+        ArrayList<Clothes> clothes = dbHelper.getAllClothes();
+        for (int i = 0; i < clothes.size(); i++) {
+            Log.v("testing", "clothes[" + i + "] = " + clothes.get(i));
+        }
 
        foHelpButton.setOnClickListener(new View.OnClickListener(){
            @Override

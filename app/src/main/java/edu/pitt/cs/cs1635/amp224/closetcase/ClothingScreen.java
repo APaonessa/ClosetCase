@@ -168,9 +168,6 @@ public class ClothingScreen extends AppCompatActivity {
                     }
                 });
         deleteClothing.show();
-        return;
-
-
     }
 
 

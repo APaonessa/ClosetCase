@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ActionProvider;
 import android.view.ContextMenu;
 import android.view.SubMenu;
@@ -36,7 +37,7 @@ public class ClosetScreen extends AppCompatActivity {
     ArrayList<Clothes> clothes;
     DBHelper dbHelper;
     String allClothes;
-    MyAdapter adapter;
+    ImageAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +53,15 @@ public class ClosetScreen extends AppCompatActivity {
         dbHelper.getReadableDatabase();
         //clothes = new ArrayList<Clothes>();
 
-
+        Log.v("testing", "before loadView");
         gridView = (GridView) findViewById(R.id.gridView);
+        Log.v("testing", "before getAllClothes");
         clothes = dbHelper.getAllClothes();
+        Log.v("testing", "after getAllClothes");
 
-        adapter = new MyAdapter(ClosetScreen.this, clothes);
+        adapter = new ImageAdapter(ClosetScreen.this, clothes);
+        adapter.setSharedPreferences(getSharedPreferences(getString(R.string.preference_file_name), Context.MODE_PRIVATE));
+        adapter.setPicturePathKey(getString(R.string.picture_path_key));
         gridView.setAdapter(adapter);
 
 
@@ -78,7 +83,7 @@ public class ClosetScreen extends AppCompatActivity {
     protected void onResume()
     {
         super.onResume();
-        //setPictures();
+        setPictures();
     }
 
 
@@ -103,10 +108,13 @@ public class ClosetScreen extends AppCompatActivity {
         String path;
         Drawable pic;
         ImageView image = null;
-/*
+
         for(int i = 0; i < clothes.size(); i++)
         {
             path = pref.getString(getString(R.string.picture_path_key) + clothes.get(i).getId(), "");
+            Log.v("testing", "setPictures path: " + path);
+            image = (ImageView)adapter.getView(i, image, gridView);
+            /*
             pic = Drawable.createFromPath(path);
             image = (ImageView)adapter.getView(i, image, gridView);
             if(pic != null)
@@ -114,7 +122,8 @@ public class ClosetScreen extends AppCompatActivity {
             else
                 image.setImageDrawable(getResources().getDrawable(R.drawable.camera_stock));
             image = null;
-        }*/
+            */
+        }
     }
 
 }
