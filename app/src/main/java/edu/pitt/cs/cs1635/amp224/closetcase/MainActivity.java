@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity{
 
 
         dbHelper = new DBHelper(this);
+        dbHelper.getReadableDatabase();
 
        /* final Cursor cursor = dbHelper.getAllClothes();
         String[] columns = new String[]{
