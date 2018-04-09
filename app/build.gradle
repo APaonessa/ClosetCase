@@ -31,5 +31,5 @@ dependencies {
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.android.support:gridlayout-v7:26.1.0'
     compile 'org.greenrobot:greendao:3.2.2'
-    compile 'com.github.faruktoptas:FancyShowCaseView:1.0.0'
+    implementation 'com.github.dimorinny:show-case-card-view:0.0.4'
 }
