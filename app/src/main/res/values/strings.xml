@@ -50,5 +50,8 @@
     <string name="Delete">Delete</string>
     <string name="Cancel">Cancel</string>
 
-
+    <!-- Key used to access the preference file where the path for a particular picture is stored -->
+    <string name="picture_path_key">picture</string>
+    <!-- Preference File key.-->
+    <string name="preference_file_name">edu.pitt.cs.cs1635.amp224.closetcase.PREFERENCE_FILE</string>
 </resources>

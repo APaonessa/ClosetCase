@@ -2,7 +2,9 @@ package edu.pitt.cs.cs1635.amp224.closetcase;
 
 import android.app.ActionBar;
 import android.content.ClipData;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +20,7 @@ import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -29,11 +32,11 @@ public class ClosetScreen extends AppCompatActivity {
     Button addNew;
     SearchView search;
     //ImageButton back;
-    //GridView gridView;
-    ArrayList clothes = new ArrayList<>();
+    GridView gridView;
+    ArrayList<Clothes> clothes;
     DBHelper dbHelper;
     String allClothes;
-
+    MyAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,16 +51,13 @@ public class ClosetScreen extends AppCompatActivity {
         //gv = (GridView) findViewById(R.id.gridView);
 
         dbHelper = new DBHelper(this);
-        ArrayList<Clothes> clothesList;
-        clothesList = new ArrayList<Clothes>();
-        MyAdapter adapter;
+        //clothes = new ArrayList<Clothes>();
 
 
+        gridView = (GridView) findViewById(R.id.gridView);
+        clothes = dbHelper.getAllClothes();
 
-        GridView gridView = (GridView) findViewById(R.id.gridView);
-        clothesList = dbHelper.getAllClothes();
-
-        adapter = new MyAdapter(ClosetScreen.this, clothesList);
+        adapter = new MyAdapter(ClosetScreen.this, clothes);
         gridView.setAdapter(adapter);
 
 
@@ -75,7 +75,12 @@ public class ClosetScreen extends AppCompatActivity {
 
     }
 
-
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        setPictures();
+    }
 
 
     public void goToAddNew(View view){
@@ -91,6 +96,26 @@ public class ClosetScreen extends AppCompatActivity {
     public void goToOutfitScreen(View view){
         Intent intent = new Intent(this, OutfitScreen.class);
         startActivity(intent);
+    }
+
+    private void setPictures()
+    {
+        SharedPreferences pref = getSharedPreferences(getString(R.string.preference_file_name), Context.MODE_PRIVATE);
+        String path;
+        Drawable pic;
+        ImageView image = null;
+
+        for(int i = 0; i < clothes.size(); i++)
+        {
+            path = pref.getString(getString(R.string.picture_path_key) + clothes.get(i).getId(), "");
+            pic = Drawable.createFromPath(path);
+            image = (ImageView)adapter.getView(i, image, gridView);
+            if(pic != null)
+                image.setImageDrawable(pic);
+            else
+                image.setImageDrawable(getResources().getDrawable(R.drawable.camera_stock));
+            image = null;
+        }
     }
 
 }

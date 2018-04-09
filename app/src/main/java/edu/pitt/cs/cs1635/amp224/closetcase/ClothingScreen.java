@@ -1,11 +1,22 @@
 package edu.pitt.cs.cs1635.amp224.closetcase;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.database.Cursor;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.os.Environment;
+import android.preference.Preference;
+import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,6 +25,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import edu.pitt.cs.cs1635.amp224.closetcase.R;
 
@@ -41,6 +56,13 @@ public class ClothingScreen extends AppCompatActivity {
     AlertDialog deleteClothing;
 
     int clothesID;
+
+    //int pic_res_id;
+   // int num_pictures;
+    SharedPreferences pref;
+    String picture_path;
+    //boolean pic_success;
+    static final int TAKE_PHOTO_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +115,21 @@ public class ClothingScreen extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        Resources res = getResources();
+        pref = this.getSharedPreferences(getString(R.string.preference_file_name), Context.MODE_PRIVATE);
+        picture_path = pref.getString(getString(R.string.picture_path_key) + clothesID, "");
+        //num_pictures = pref.getInt(getString(R.string.picture_total_key), -1);
+        Drawable pic = Drawable.createFromPath(picture_path);
+        //Log.d("ContentValues", picture_path);
+        if(pic != null)
+            photo.setImageDrawable(pic);
+        else
+            photo.setImageDrawable(res.getDrawable(R.drawable.camera_stock));
+    }
 
     //Save button
     public void goToClosetScreen(View view) {
@@ -158,7 +195,82 @@ public class ClothingScreen extends AppCompatActivity {
         }
     }
 
+    public void launchCamera(View view)
+    {
+        dispatchTakePictureIntent();
+    }
+/*
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+        SharedPreferences.Editor edit = pref.edit();
+        edit.putInt(getString(R.string.picture_total_key), num_pictures);
+        edit.commit();
+    }
 
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+        SharedPreferences.Editor edit = pref.edit();
+        edit.putInt(getString(R.string.picture_total_key), num_pictures);
+        edit.commit();
+    }
+*/
+    //Modified from online tutorial
+    private File createImageFile() throws IOException
+    {
+        String fileName = "picture" + (clothesID);
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        //Log.d("ContentValues", Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(fileName, ".jpg", storageDir);
+        picture_path = image.getAbsolutePath();
+        //Log.d("ContentValues", picture_path);
+        return image;
+    }
+
+    //Modified from online tutorial
+    private void dispatchTakePictureIntent()
+    {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if(takePictureIntent.resolveActivity(getPackageManager()) != null)
+        {
+            File imageFile = null;
+            try
+            {
+                imageFile = createImageFile();
+            }
+            catch(Exception e)
+            {
+                Log.d("ContentValues", "Error creating file: " + e.getMessage());
+                return;
+            }
+
+            if(imageFile != null)
+            {
+                Uri picUri = FileProvider.getUriForFile(this, "edu.pitt.cs.cs1635.amp224.closetcase.fileprovider", imageFile);
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, picUri);
+                startActivityForResult(takePictureIntent, TAKE_PHOTO_REQUEST);
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        //Log.d("ContentValues", "Result received.");
+        if(resultCode == RESULT_OK)
+        {
+            SharedPreferences.Editor edit = pref.edit();
+            edit.putString(getString(R.string.picture_path_key) + clothesID, picture_path);
+            edit.commit();
+        }
+
+        else
+            Log.d("ContentValues", "Error on capture.");
+    }
 
 }
 

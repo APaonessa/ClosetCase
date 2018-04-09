@@ -1,12 +1,17 @@
 package edu.pitt.cs.cs1635.amp224.closetcase;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+
+import java.util.ArrayList;
 
 public class OutfitScreen extends AppCompatActivity  { //Open class
 
@@ -23,6 +28,8 @@ public class OutfitScreen extends AppCompatActivity  { //Open class
     int topPosition;
     int bottomPosition;
 
+    DBHelper dbHelper;
+    ArrayList<Clothes> clothes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) { //Open onCreate
@@ -40,12 +47,7 @@ public class OutfitScreen extends AppCompatActivity  { //Open class
         bottomImage = findViewById(R.id.imageViewBottom);
         complete = findViewById(R.id.Complete);
 
-        topPosition = 0;
-        bottomPosition = 0;
-
-        topImage.setImageResource(shirts[topPosition]);
-        bottomImage.setImageResource(pants[bottomPosition]);
-
+  /*
         topLeft.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v) {
@@ -99,15 +101,114 @@ public class OutfitScreen extends AppCompatActivity  { //Open class
                 }
             }
         });
-
+*/
 
 
     }//Close onCreate
 
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+
+        dbHelper = new DBHelper(this);
+        clothes = dbHelper.getAllClothes();
+
+        topPosition = -1;
+        bottomPosition = -1;
+
+        for(int i = 0; i < clothes.size(); i++)
+            if(clothes.get(i).getType().equals("Shirt"))
+            {
+                topPosition = i;
+                break;
+            }
+
+        for(int i = 0; i < clothes.size(); i++)
+            if(clothes.get(i).getType().equals("Pants"))
+            {
+                bottomPosition = i;
+                break;
+            }
+
+        setPicture(topPosition, topImage);
+        setPicture(bottomPosition, bottomImage);
+    }
 
     public void goToHome(View view){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    private void setPicture(int id, ImageView v)
+    {
+        SharedPreferences pref = getSharedPreferences(getString(R.string.preference_file_name), Context.MODE_PRIVATE);
+        String path = pref.getString(getString(R.string.picture_path_key) + id, "");
+        Drawable image = Drawable.createFromPath(path);
+        if(image != null)
+            v.setImageDrawable(image);
+        else
+            v.setImageDrawable(getResources().getDrawable(R.drawable.camera_stock));
+    }
+
+    public void onTopRight(View view)
+    {
+        if(topPosition == -1)
+            return;
+
+        do {
+            topPosition++;
+            if (topPosition >= clothes.size())
+                topPosition = 0;
+        }
+        while(!clothes.get(topPosition).getType().equals("Shirt"));
+
+        setPicture(topPosition, topImage);
+    }
+
+    public void onTopLeft(View view)
+    {
+        if(topPosition == -1)
+            return;
+
+        do {
+            topPosition--;
+            if (topPosition < 0)
+                topPosition = clothes.size() - 1;
+        }
+        while(!clothes.get(topPosition).getType().equals("Shirt"));
+
+        setPicture(topPosition, topImage);
+    }
+
+    public void onBottomRight(View view)
+    {
+        if(bottomPosition == -1)
+            return;
+
+        do {
+            bottomPosition++;
+            if (bottomPosition >= clothes.size())
+                bottomPosition = 0;
+        }
+        while(!clothes.get(bottomPosition).getType().equals("Pants"));
+
+        setPicture(bottomPosition, bottomImage);
+    }
+
+    public void onBottomLeft(View view)
+    {
+        if(bottomPosition == -1)
+            return;
+
+        do {
+            bottomPosition--;
+            if (bottomPosition < 0)
+                bottomPosition = clothes.size() - 1;
+        }
+        while(!clothes.get(bottomPosition).getType().equals("Pants"));
+
+        setPicture(bottomPosition, bottomImage);
     }
 
 } ///Close class
