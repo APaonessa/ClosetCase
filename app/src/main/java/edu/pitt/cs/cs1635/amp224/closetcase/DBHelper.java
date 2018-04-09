@@ -157,7 +157,7 @@ public class DBHelper extends SQLiteOpenHelper{
 
     if(res.moveToFirst()){
         do{
-            ArrayList<Clothes> cts = new ArrayList<Clothes>();
+            //ArrayList<Clothes> cts = new ArrayList<Clothes>();
 
             int id = res.getInt(res.getColumnIndex(CLOTHES_COLUMN_ID));
             String name = res.getString(res.getColumnIndex(CLOTHES_COLUMN_NAME));
@@ -173,7 +173,7 @@ public class DBHelper extends SQLiteOpenHelper{
             newClothes.setMaterial(material);
 
 
-            cts.add(newClothes);
+            clothes.add(newClothes);
         }while(res.moveToNext());
     }
         res.close();

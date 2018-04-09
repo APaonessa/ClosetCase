@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -117,22 +118,31 @@ public class OutfitScreen extends AppCompatActivity  { //Open class
         topPosition = -1;
         bottomPosition = -1;
 
+        if(clothes.isEmpty())
+            Log.d("OutfitScreen", "List is empty.");
+
         for(int i = 0; i < clothes.size(); i++)
-            if(clothes.get(i).getType().equals("Shirt"))
+            if(clothes.get(i).getType().equalsIgnoreCase("Shirt"))
             {
                 topPosition = i;
+                setPicture(clothes.get(i).getId(), topImage);
+                //Log.d("OutfitScreen", "setPicture called with id: " + clothes.get(i).getId());
                 break;
             }
 
         for(int i = 0; i < clothes.size(); i++)
-            if(clothes.get(i).getType().equals("Pants"))
+            if(clothes.get(i).getType().equalsIgnoreCase("Pants"))
             {
                 bottomPosition = i;
+                setPicture(clothes.get(i).getId(), bottomImage);
+                //Log.d("OutfitScreen", "setPicture called with id: " + clothes.get(i).getId());
                 break;
             }
 
-        setPicture(topPosition, topImage);
-        setPicture(bottomPosition, bottomImage);
+        if(topPosition == -1)
+            setPicture(-1, topImage);
+        if(bottomPosition == -1)
+            setPicture(-1, bottomImage);
     }
 
     public void goToHome(View view){
@@ -144,6 +154,7 @@ public class OutfitScreen extends AppCompatActivity  { //Open class
     {
         SharedPreferences pref = getSharedPreferences(getString(R.string.preference_file_name), Context.MODE_PRIVATE);
         String path = pref.getString(getString(R.string.picture_path_key) + id, "");
+        //Log.d("OutfitScreen", path);
         Drawable image = Drawable.createFromPath(path);
         if(image != null)
             v.setImageDrawable(image);
@@ -163,7 +174,7 @@ public class OutfitScreen extends AppCompatActivity  { //Open class
         }
         while(!clothes.get(topPosition).getType().equals("Shirt"));
 
-        setPicture(topPosition, topImage);
+        setPicture(clothes.get(topPosition).getId(), topImage);
     }
 
     public void onTopLeft(View view)
@@ -178,7 +189,7 @@ public class OutfitScreen extends AppCompatActivity  { //Open class
         }
         while(!clothes.get(topPosition).getType().equals("Shirt"));
 
-        setPicture(topPosition, topImage);
+        setPicture(clothes.get(topPosition).getId(), topImage);
     }
 
     public void onBottomRight(View view)
@@ -193,7 +204,7 @@ public class OutfitScreen extends AppCompatActivity  { //Open class
         }
         while(!clothes.get(bottomPosition).getType().equals("Pants"));
 
-        setPicture(bottomPosition, bottomImage);
+        setPicture(clothes.get(bottomPosition).getId(), bottomImage);
     }
 
     public void onBottomLeft(View view)
@@ -208,7 +219,7 @@ public class OutfitScreen extends AppCompatActivity  { //Open class
         }
         while(!clothes.get(bottomPosition).getType().equals("Pants"));
 
-        setPicture(bottomPosition, bottomImage);
+        setPicture(clothes.get(bottomPosition).getId(), bottomImage);
     }
 
 } ///Close class

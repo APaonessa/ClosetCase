@@ -78,7 +78,7 @@ public class ClosetScreen extends AppCompatActivity {
     protected void onResume()
     {
         super.onResume();
-        setPictures();
+        //setPictures();
     }
 
 
@@ -103,7 +103,7 @@ public class ClosetScreen extends AppCompatActivity {
         String path;
         Drawable pic;
         ImageView image = null;
-
+/*
         for(int i = 0; i < clothes.size(); i++)
         {
             path = pref.getString(getString(R.string.picture_path_key) + clothes.get(i).getId(), "");
@@ -114,7 +114,7 @@ public class ClosetScreen extends AppCompatActivity {
             else
                 image.setImageDrawable(getResources().getDrawable(R.drawable.camera_stock));
             image = null;
-        }
+        }*/
     }
 
 }
