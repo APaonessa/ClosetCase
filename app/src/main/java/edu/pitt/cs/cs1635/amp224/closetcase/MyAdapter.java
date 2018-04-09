@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -42,7 +43,8 @@ public class MyAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView == null)
-            convertView=inflater.inflate(R.layout.activity_closet_screen, null);
+            convertView = new ImageView(parent.getContext());
+            // convertView=inflater.inflate(R.layout.activity_closet_screen, null);
 
         return convertView;
 
