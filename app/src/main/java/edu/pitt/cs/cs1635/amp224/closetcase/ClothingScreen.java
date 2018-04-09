@@ -67,12 +67,11 @@ public class ClothingScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_clothing_screen);
-        //getActionBar().setDisplayHomeAsUpEnabled(true);
-        //
-        //up = findViewById(R.id.upButton);
 
         clothesID = getIntent().getIntExtra(MainActivity.KEY_EXTRA_CONTACT_ID, 0);
+
+        setContentView(R.layout.activity_clothing_screen);
+
 
         photo = findViewById(R.id.photoId);
         descriptorId = findViewById(R.id.articleId);
@@ -97,7 +96,7 @@ public class ClothingScreen extends AppCompatActivity {
         material = findViewById(R.id.materialDropDownId);
         //Spinner - Cotton Denim
         ArrayAdapter<CharSequence> materialAdapter = ArrayAdapter.createFromResource(this,
-                R.array.articleArray, android.R.layout.simple_spinner_item);
+                R.array.materialArray, android.R.layout.simple_spinner_item);
         materialAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         material.setAdapter(materialAdapter);
         // -----
@@ -111,7 +110,22 @@ public class ClothingScreen extends AppCompatActivity {
         save = findViewById(R.id.saveButton);
         delete = findViewById(R.id.deleteButton);
 
+        dbHelper = new DBHelper(this);
 
+        if(clothesID > 0){
+            save.setVisibility(View.GONE);
+
+            Cursor rs = dbHelper.getClothes(clothesID);
+            rs.moveToFirst();
+            String clothesName = rs.getString(rs.getColumnIndex(DBHelper.CLOTHES_COLUMN_NAME));
+            String clothesType = rs.getString(rs.getColumnIndex(DBHelper.CLOTHES_COLUMN_TYPE));
+            String clothesColor = rs.getString(rs.getColumnIndex(DBHelper.CLOTHES_COLUMN_COLOR));
+            String clothesPattern = rs.getString(rs.getColumnIndex(DBHelper.CLOTHES_COLUMN_PATTERN));
+            String clothesMaterial = rs.getString(rs.getColumnIndex(DBHelper.CLOTHES_COLUMN_MATERIAL));
+            if(!rs.isClosed()){
+                //rs.close();
+            }
+        }
 
     }
 
@@ -133,8 +147,8 @@ public class ClothingScreen extends AppCompatActivity {
 
     //Save button
     public void goToClosetScreen(View view) {
-        Intent intent = new Intent(this, ClosetScreen.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, ClosetScreen.class);
+       //startActivity(intent);
         persistClothes();
         return;
     }

@@ -39,12 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mcHelpButton = findViewById(R.id.button6);
 
         dbHelper = new DBHelper(this);
+        dbHelper.getReadableDatabase();
 
-       /* final Cursor cursor = dbHelper.getAllClothes();
-        String[] columns = new String[]{
-                DBHelper.CLOTHES_COLUMN_ID,
-                DBHelper.CLOTHES_COLUMN_NAME
-        };*/
 
 
     }

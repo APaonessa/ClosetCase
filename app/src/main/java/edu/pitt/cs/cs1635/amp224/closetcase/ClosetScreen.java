@@ -42,13 +42,11 @@ public class ClosetScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_closet_screen);
-        //getActionBar().setDisplayHomeAsUpEnabled(true);
 
         filter = findViewById(R.id.Filter);
         addNew = findViewById(R.id.AddNew);
         search = findViewById(R.id.searchView);
-        //back = findViewById(R.id.imageButton);
-        //gv = (GridView) findViewById(R.id.gridView);
+
 
         dbHelper = new DBHelper(this);
         //clothes = new ArrayList<Clothes>();
@@ -105,7 +103,7 @@ public class ClosetScreen extends AppCompatActivity {
         Drawable pic;
         ImageView image = null;
 
-        for(int i = 0; i < clothes.size(); i++)
+        for(int i = 1; i < clothes.size(); i++)
         {
             path = pref.getString(getString(R.string.picture_path_key) + clothes.get(i).getId(), "");
             pic = Drawable.createFromPath(path);

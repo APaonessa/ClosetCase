@@ -34,9 +34,11 @@ public class DBHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        db.execSQL("DROP TABLE IF EXISTS " + CLOTHES_TABLE_NAME);
+
         db.execSQL(
                 "CREATE TABLE " + CLOTHES_TABLE_NAME +
-                        "(" + CLOTHES_COLUMN_ID + "INTEGER PRIMARY KEY, " +
+                        "(" + CLOTHES_COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         CLOTHES_COLUMN_NAME + " TEXT, " +
                         CLOTHES_COLUMN_TYPE + " TEXT, " +
                         CLOTHES_COLUMN_COLOR + " TEXT, " +
@@ -55,7 +57,7 @@ public class DBHelper extends SQLiteOpenHelper{
 
     public boolean insertClothes(String name, String type, String color, String material, String pattern) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
+        /*ContentValues contentValues = new ContentValues();
 
         contentValues.put(CLOTHES_COLUMN_NAME, name);
         contentValues.put(CLOTHES_COLUMN_TYPE, type);
@@ -63,7 +65,9 @@ public class DBHelper extends SQLiteOpenHelper{
         contentValues.put(CLOTHES_COLUMN_MATERIAL, material);
         contentValues.put(CLOTHES_COLUMN_PATTERN, pattern);
 
-        db.insert(CLOTHES_TABLE_NAME, null, contentValues);
+        db.insert(CLOTHES_TABLE_NAME, null, contentValues);*/
+        db.execSQL("INSERT INTO " + CLOTHES_TABLE_NAME + "VALUES(" + name + "," + type + "," +
+                color + "," + material + "," + pattern + ")");
         return true;
     }
 
@@ -106,28 +110,33 @@ public class DBHelper extends SQLiteOpenHelper{
         res.moveToFirst();
 
         if(res != null){
-            while (res.moveToNext()){
-                int id = res.getInt(res.getColumnIndex(CLOTHES_COLUMN_ID));
-                String name = res.getString(res.getColumnIndex(CLOTHES_COLUMN_NAME));
-                String type = res.getString(res.getColumnIndex(CLOTHES_COLUMN_TYPE));
-                String pattern = res.getString(res.getColumnIndex(CLOTHES_COLUMN_PATTERN));
-                String material = res.getString(res.getColumnIndex(CLOTHES_COLUMN_MATERIAL));
+            while (res.isAfterLast() == false) {
+                if (res.getInt(res.getColumnIndex(CLOTHES_COLUMN_ID)) == -1) {
+                    return null;
+                } else {
+                    Integer id = res.getInt(res.getColumnIndex(CLOTHES_COLUMN_ID));
+                    String name = res.getString(res.getColumnIndex(CLOTHES_COLUMN_NAME));
+                    String type = res.getString(res.getColumnIndex(CLOTHES_COLUMN_TYPE));
+                    String pattern = res.getString(res.getColumnIndex(CLOTHES_COLUMN_PATTERN));
+                    String material = res.getString(res.getColumnIndex(CLOTHES_COLUMN_MATERIAL));
 
-                Clothes cts = new Clothes();
-                cts.setId(id);
-                cts.setName(name);
-                cts.setType(type);
-                cts.setPattern(pattern);
-                cts.setMaterial(material);
+                    Clothes cts = new Clothes();
+                    cts.setId(id);
+                    cts.setName(name);
+                    cts.setType(type);
+                    cts.setPattern(pattern);
+                    cts.setMaterial(material);
 
-                Log.v("DBHELPER: ", "ID: " + id);
-                Log.v("DBHELPER: ", "Name: " + name);
-                Log.v("DBHELPER: ", "Type: " + type);
-                Log.v("DBHELPER: ", "Pattern: " + pattern);
-                Log.v("DBHELPER: ", "Material: " + material);
-                clothes.add(cts);
+                    Log.v("DBHELPER: ", "ID: " + id);
+                    Log.v("DBHELPER: ", "Name: " + name);
+                    Log.v("DBHELPER: ", "Type: " + type);
+                    Log.v("DBHELPER: ", "Pattern: " + pattern);
+                    Log.v("DBHELPER: ", "Material: " + material);
+                    clothes.add(cts);
 
+                    res.moveToNext();
 
+                }
             }
         }
         else{
@@ -135,6 +144,9 @@ public class DBHelper extends SQLiteOpenHelper{
         }
         return clothes;
     }
+
+
+
 
 }
 
