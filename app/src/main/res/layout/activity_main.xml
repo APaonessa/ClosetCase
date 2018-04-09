@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.pitt.cs.cs1635.amp224.closetcase.MainActivity">
-    <!--android:background="@drawable/background" android:alpha="0.65"> -->
+    tools:context="edu.pitt.cs.cs1635.amp224.closetcase.MainActivity"
+    android:background="@drawable/background" android:alpha="0.65">
 
 
     <TextView

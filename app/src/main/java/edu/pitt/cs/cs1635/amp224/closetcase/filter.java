@@ -9,13 +9,18 @@ import android.widget.CheckBox;
 
 public class filter extends AppCompatActivity {
 
-    CheckBox color1;
-    CheckBox color2;
-    CheckBox color3;
-    CheckBox color4;
+    CheckBox color1; //BLACK
+    CheckBox color2;//BLUE
+    CheckBox color3;//RED
+    CheckBox color4;//BROWN
     CheckBox type1;
     CheckBox type2;
     Button complete;
+    DBHelper dbHelper = new DBHelper(this);
+
+    public DBHelper getDbHelper() {
+        return dbHelper;
+    }
 
 
     @Override
@@ -38,5 +43,52 @@ public class filter extends AppCompatActivity {
     public void goToClosetScreen(View view){
         Intent intent = new Intent(this, ClosetScreen.class);
         startActivity(intent);
+    }
+
+    public void filter(){
+        getDbHelper();
+        dbHelper.getReadableDatabase();
+        if(color1.isChecked() == true){
+            dbHelper.getBlackClothes();
+
+        }
+        else if(color2.isChecked() == true){
+            dbHelper.getBlueClothes();
+
+        }
+        else if(color3.isChecked() == true){
+            dbHelper.getrRedClothes();
+        }
+        else if(color4.isChecked() == true){
+            dbHelper.getBrownClothes();
+        }
+        else if((color1.isChecked() ==true)&& (color2.isChecked() == true)){
+            dbHelper.getBlackClothes();
+            dbHelper.getBlueClothes();
+        }
+        else if((color1.isChecked() == true) && (color3.isChecked() == true)){
+            dbHelper.getBlackClothes();
+            dbHelper.getrRedClothes();
+
+        }
+        else if((color1.isChecked() == true) && (color4.isChecked() == true)){
+            dbHelper.getBlackClothes();
+            dbHelper.getBrownClothes();
+
+        }
+        else if((color2.isChecked() == true) && (color3.isChecked() == true)){
+            dbHelper.getBlueClothes();
+            dbHelper.getrRedClothes();
+
+        }
+        else if((color2.isChecked() == true) && (color4.isChecked() == true)){
+            dbHelper.getBlueClothes();
+            dbHelper.getBrownClothes();
+
+        }
+        else{
+            dbHelper.getrRedClothes();
+            dbHelper.getBrownClothes();
+        }
     }
 }
