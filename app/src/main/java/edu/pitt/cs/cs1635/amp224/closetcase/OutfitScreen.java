@@ -114,6 +114,8 @@ public class OutfitScreen extends AppCompatActivity  { //Open class
 
         dbHelper = new DBHelper(this);
         clothes = dbHelper.getAllClothes();
+        ArrayList<Clothes> shirts;
+        shirts = dbHelper.getShirts();
 
         topPosition = -1;
         bottomPosition = -1;
@@ -121,23 +123,23 @@ public class OutfitScreen extends AppCompatActivity  { //Open class
         if(clothes.isEmpty())
             Log.d("OutfitScreen", "List is empty.");
 
-        for(int i = 0; i < clothes.size(); i++)
-            if(clothes.get(i).getType().equalsIgnoreCase("Shirt"))
-            {
+        for(int i = 0; i < shirts.size(); i++) {
+            //if (clothes.get(i).getType().equalsIgnoreCase("Shirt")) {
                 topPosition = i;
-                setPicture(clothes.get(i).getId(), topImage);
-                //Log.d("OutfitScreen", "setPicture called with id: " + clothes.get(i).getId());
-                break;
-            }
+                setPicture(shirts.get(i).getId(), topImage);
+                Log.v("OutfitScreen", "setTOPPicture called with id: " + shirts.get(i).getId());
+             //   break;
+           // }
+        }
 
-        for(int i = 0; i < clothes.size(); i++)
-            if(clothes.get(i).getType().equalsIgnoreCase("Pants"))
-            {
+        for(int i = 0; i < clothes.size(); i++) {
+            if (clothes.get(i).getType().equalsIgnoreCase("Pants")) {
                 bottomPosition = i;
                 setPicture(clothes.get(i).getId(), bottomImage);
-                //Log.d("OutfitScreen", "setPicture called with id: " + clothes.get(i).getId());
+                Log.v("OutfitScreen", "setBOTTOMPicture called with id: " + clothes.get(i).getId());
                 break;
             }
+        }
 
         if(topPosition == -1)
             setPicture(-1, topImage);

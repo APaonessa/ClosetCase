@@ -185,7 +185,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public ArrayList<Clothes> getBlackClothes() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + CLOTHES_TABLE_NAME + " WHERE " +
-                CLOTHES_COLUMN_COLOR + "=Black",new String[]{String.valueOf(CLOTHES_COLUMN_COLOR)});
+                CLOTHES_COLUMN_COLOR + "='Black'",new String[]{String.valueOf(CLOTHES_COLUMN_COLOR)});
         ArrayList<Clothes> clothes = new ArrayList<Clothes>();
         res.moveToFirst();
         if(res.moveToFirst()){
@@ -218,7 +218,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public ArrayList<Clothes> getBrownClothes() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + CLOTHES_TABLE_NAME + " WHERE " +
-                CLOTHES_COLUMN_COLOR + "=Brown", new String[]{String.valueOf(CLOTHES_COLUMN_COLOR)});
+                CLOTHES_COLUMN_COLOR + "='Brown'", new String[]{String.valueOf(CLOTHES_COLUMN_COLOR)});
         ArrayList<Clothes> clothes = new ArrayList<Clothes>();
         res.moveToFirst();
         if(res.moveToFirst()){
@@ -251,7 +251,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public ArrayList<Clothes> getrRedClothes() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + CLOTHES_TABLE_NAME + " WHERE " +
-                CLOTHES_COLUMN_COLOR + "=Red", new String[]{String.valueOf(CLOTHES_COLUMN_COLOR)});
+                CLOTHES_COLUMN_COLOR + "='Red'", new String[]{String.valueOf(CLOTHES_COLUMN_COLOR)});
         ArrayList<Clothes> clothes = new ArrayList<Clothes>();
         res.moveToFirst();
         if(res.moveToFirst()){
@@ -283,7 +283,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public ArrayList<Clothes> getBlueClothes() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + CLOTHES_TABLE_NAME + " WHERE " +
-                CLOTHES_COLUMN_NAME + "=Blue", new String[]{String.valueOf(CLOTHES_COLUMN_COLOR)});
+                CLOTHES_COLUMN_NAME + "='Blue'", new String[]{String.valueOf(CLOTHES_COLUMN_COLOR)});
         ArrayList<Clothes> clothes = new ArrayList<Clothes>();
         res.moveToFirst();
         if(res.moveToFirst()){
@@ -316,7 +316,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public ArrayList<Clothes> getShirts(){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + CLOTHES_TABLE_NAME + " WHERE " +
-                CLOTHES_COLUMN_TYPE + "=Shirt", new String[] {String.valueOf(CLOTHES_COLUMN_TYPE)});
+                CLOTHES_COLUMN_TYPE + "='Shirt'", null);
         ArrayList<Clothes> clothes = new ArrayList<Clothes>();
         res.moveToFirst();
         if(res.moveToFirst()){
@@ -349,7 +349,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public ArrayList<Clothes> getPants(){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + CLOTHES_TABLE_NAME + " WHERE " +
-            CLOTHES_COLUMN_TYPE + "=Pants", new String[] {String.valueOf(CLOTHES_COLUMN_TYPE)});
+            CLOTHES_COLUMN_TYPE + "='Pants'", new String[] {String.valueOf(CLOTHES_COLUMN_TYPE)});
         ArrayList<Clothes> clothes = new ArrayList<Clothes>();
         res.moveToFirst();
         if(res.moveToFirst()){
@@ -382,7 +382,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public ArrayList<Clothes> whenRedShirtSelected() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + CLOTHES_TABLE_NAME + " WHERE " +
-                CLOTHES_COLUMN_TYPE + "=Pants AND " + CLOTHES_COLUMN_COLOR + "=Black", new String[]{String.valueOf(CLOTHES_COLUMN_TYPE)});
+                CLOTHES_COLUMN_TYPE + "='Pants' AND " + CLOTHES_COLUMN_COLOR + "='Black'", new String[]{String.valueOf(CLOTHES_COLUMN_TYPE)});
         ArrayList<Clothes> clothes = new ArrayList<Clothes>();
 
         res.moveToFirst();
@@ -416,7 +416,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public ArrayList<Clothes> whenBlackShirtSelected() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + CLOTHES_TABLE_NAME + " WHERE " +
-                CLOTHES_COLUMN_TYPE + "=Pants AND " + CLOTHES_COLUMN_COLOR + "=Blue", new String[]{String.valueOf(CLOTHES_COLUMN_TYPE)});
+                CLOTHES_COLUMN_TYPE + "='Pants' AND " + CLOTHES_COLUMN_COLOR + "='Blue'", new String[]{String.valueOf(CLOTHES_COLUMN_TYPE)});
         ArrayList<Clothes> clothes = new ArrayList<Clothes>();
 
         res.moveToFirst();
@@ -450,7 +450,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public ArrayList<Clothes> whenBlueShirtSelected() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + CLOTHES_TABLE_NAME + " WHERE " +
-                CLOTHES_COLUMN_TYPE + "=Pants AND " + CLOTHES_COLUMN_COLOR + "=Black", new String[]{String.valueOf(CLOTHES_COLUMN_TYPE)});
+                CLOTHES_COLUMN_TYPE + "='Pants' AND " + CLOTHES_COLUMN_COLOR + "='Black'", new String[]{String.valueOf(CLOTHES_COLUMN_TYPE)});
         ArrayList<Clothes> clothes = new ArrayList<Clothes>();
 
         res.moveToFirst();
@@ -484,7 +484,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public ArrayList<Clothes> whenBrownShirtSelected() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + CLOTHES_TABLE_NAME + " WHERE " +
-                CLOTHES_COLUMN_TYPE + "=Pants AND " + CLOTHES_COLUMN_COLOR + "=Blue", new String[]{String.valueOf(CLOTHES_COLUMN_TYPE)});
+                CLOTHES_COLUMN_TYPE + "='Pants' AND " + CLOTHES_COLUMN_COLOR + "='Blue'", new String[]{String.valueOf(CLOTHES_COLUMN_TYPE)});
         ArrayList<Clothes> clothes = new ArrayList<Clothes>();
 
         res.moveToFirst();
@@ -518,7 +518,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public ArrayList<Clothes> whenRedPantsSelected() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + CLOTHES_TABLE_NAME + " WHERE " +
-                CLOTHES_COLUMN_TYPE + "=Shirt AND " + CLOTHES_COLUMN_COLOR + "=Black", new String[]{String.valueOf(CLOTHES_COLUMN_TYPE)});
+                CLOTHES_COLUMN_TYPE + "='Shirt' AND " + CLOTHES_COLUMN_COLOR + "='Black'", new String[]{String.valueOf(CLOTHES_COLUMN_TYPE)});
         ArrayList<Clothes> clothes = new ArrayList<Clothes>();
 
         res.moveToFirst();
@@ -553,7 +553,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public ArrayList<Clothes> whenBlackPantsSelected() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + CLOTHES_TABLE_NAME + " WHERE " +
-                CLOTHES_COLUMN_TYPE + "=Shirt AND " + CLOTHES_COLUMN_COLOR + "=Red", new String[]{String.valueOf(CLOTHES_COLUMN_TYPE)});
+                CLOTHES_COLUMN_TYPE + "='Shirt' AND " + CLOTHES_COLUMN_COLOR + "='Red'", new String[]{String.valueOf(CLOTHES_COLUMN_TYPE)});
         ArrayList<Clothes> clothes = new ArrayList<Clothes>();
 
         res.moveToFirst();
@@ -587,7 +587,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public ArrayList<Clothes> whenBluePantsSelected() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + CLOTHES_TABLE_NAME + " WHERE " +
-                CLOTHES_COLUMN_TYPE + "=Shirt AND " + CLOTHES_COLUMN_COLOR + "=Brown", new String[]{String.valueOf(CLOTHES_COLUMN_TYPE)});
+                CLOTHES_COLUMN_TYPE + "='Shirt' AND " + CLOTHES_COLUMN_COLOR + "='Brown'", new String[]{String.valueOf(CLOTHES_COLUMN_TYPE)});
         ArrayList<Clothes> clothes = new ArrayList<Clothes>();
 
         res.moveToFirst();
@@ -621,7 +621,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public ArrayList<Clothes> whenBrownPantsSelected() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + CLOTHES_TABLE_NAME + " WHERE " +
-                CLOTHES_COLUMN_TYPE + "=Shirt AND " + CLOTHES_COLUMN_COLOR + "=Red", new String[]{String.valueOf(CLOTHES_COLUMN_TYPE)});
+                CLOTHES_COLUMN_TYPE + "='Shirt' AND " + CLOTHES_COLUMN_COLOR + "='Red'", new String[]{String.valueOf(CLOTHES_COLUMN_TYPE)});
         ArrayList<Clothes> clothes = new ArrayList<Clothes>();
 
         res.moveToFirst();
