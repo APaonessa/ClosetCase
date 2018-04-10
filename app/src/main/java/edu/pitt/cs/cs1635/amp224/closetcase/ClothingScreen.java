@@ -76,6 +76,8 @@ public class ClothingScreen extends AppCompatActivity {
 
         photo = findViewById(R.id.photoId);
         descriptorId = findViewById(R.id.articleId);
+
+
         // Drop Down Lists
         color = findViewById(R.id.colorDropDownId);
 
@@ -283,5 +285,11 @@ public class ClothingScreen extends AppCompatActivity {
             Log.d("ContentValues", "Error on capture.");
     }
 
+
+    public void editTextDestroy(View v){
+        descriptorId.setText("");
+    }
 }
+
+
 

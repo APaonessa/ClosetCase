@@ -23,11 +23,16 @@
     <string name="Accept">Accept</string>
 
     <string-array name="colorArray">
-        <item></item>
-        <item>Black</item>
         <item>Red</item>
+        <item>Pink</item>
+        <item>Orange</item>
+        <item>Yellow</item>
+        <item>Green</item>
         <item>Blue</item>
+        <item>Purple</item>
+        <item>Black</item>
         <item>Brown</item>
+        <item>Gray</item>
     </string-array>
     <string-array name="articleArray">
         <item>Pants</item>
@@ -36,10 +41,13 @@
     <string-array name="patternArray">
         <item>Solid</item>
         <item>Plaid</item>
+        <item>Stripes</item>
+        <item>Polka Dots</item>
     </string-array>
     <string-array name="materialArray">
         <item>Cotton</item>
         <item>Denim</item>
+        <item>Fleece</item>
     </string-array>
 
 
