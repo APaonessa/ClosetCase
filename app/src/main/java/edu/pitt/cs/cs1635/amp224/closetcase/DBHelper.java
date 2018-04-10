@@ -349,7 +349,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public ArrayList<Clothes> getPants(){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + CLOTHES_TABLE_NAME + " WHERE " +
-            CLOTHES_COLUMN_TYPE + "='Pants'", new String[] {String.valueOf(CLOTHES_COLUMN_TYPE)});
+            CLOTHES_COLUMN_TYPE + "='Pants'", null);
         ArrayList<Clothes> clothes = new ArrayList<Clothes>();
         res.moveToFirst();
         if(res.moveToFirst()){

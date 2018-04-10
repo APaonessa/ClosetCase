@@ -116,6 +116,8 @@ public class OutfitScreen extends AppCompatActivity  { //Open class
         clothes = dbHelper.getAllClothes();
         ArrayList<Clothes> shirts;
         shirts = dbHelper.getShirts();
+        ArrayList<Clothes> pants;
+        pants = dbHelper.getPants();
 
         topPosition = -1;
         bottomPosition = -1;
@@ -132,13 +134,13 @@ public class OutfitScreen extends AppCompatActivity  { //Open class
            // }
         }
 
-        for(int i = 0; i < clothes.size(); i++) {
-            if (clothes.get(i).getType().equalsIgnoreCase("Pants")) {
+        for(int i = 0; i < pants.size(); i++) {
+            //if (clothes.get(i).getType().equalsIgnoreCase("Pants")) {
                 bottomPosition = i;
-                setPicture(clothes.get(i).getId(), bottomImage);
-                Log.v("OutfitScreen", "setBOTTOMPicture called with id: " + clothes.get(i).getId());
-                break;
-            }
+                setPicture(pants.get(i).getId(), bottomImage);
+                Log.v("OutfitScreen", "setBOTTOMPicture called with id: " + pants.get(i).getId());
+             //   break;
+            //}
         }
 
         if(topPosition == -1)
