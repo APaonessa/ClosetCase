@@ -22,7 +22,7 @@ public class ImageAdapter extends BaseAdapter {
         private Context mContext;
         private SharedPreferences sharedPreferences;
         private String picturePathKey;
-        private ArrayList<Clothes> clothesList = new ArrayList<Clothes>();
+        private ArrayList<Clothes> clothesList;// = new ArrayList<Clothes>();
         private int clothesID;
 
         public ImageAdapter(Context c, ArrayList<Clothes> clothesList) {
@@ -53,6 +53,7 @@ public class ImageAdapter extends BaseAdapter {
         // create a new ImageView for each item referenced by the Adapter
         public View getView(int position, View convertView, ViewGroup parent) {
             ImageView imageView;
+            String path = "";
             if (convertView == null) {
                 // if it's not recycled, initialize some attributes
                 imageView = new ImageView(mContext);
@@ -62,8 +63,10 @@ public class ImageAdapter extends BaseAdapter {
             } else {
                 imageView = (ImageView) convertView;
             }
+            Log.v("tester", "position: " + position);
+            if(!clothesList.isEmpty())
+               path = sharedPreferences.getString(picturePathKey + clothesList.get(position).getId(), "");
 
-            String path = sharedPreferences.getString(picturePathKey + clothesList.get(position).getId(), "");
             Log.v("tester", "getView path: " + path);
             Drawable pic = Drawable.createFromPath(path);
 

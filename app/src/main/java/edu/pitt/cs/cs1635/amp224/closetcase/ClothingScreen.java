@@ -126,10 +126,11 @@ public class ClothingScreen extends AppCompatActivity {
         super.onResume();
         Resources res = getResources();
         pref = this.getSharedPreferences(getString(R.string.preference_file_name), Context.MODE_PRIVATE);
-        if(clothesID > 0)
+        _id = pref.getInt(getString(R.string.id_key), 0);
+        /*if(clothesID > 0)
             picture_path = pref.getString(getString(R.string.picture_path_key) + clothesID, "");
-        else
-            picture_path = pref.getString(getString(R.string.picture_path_key) + (_id + 1), "");
+        else*/
+        picture_path = pref.getString(getString(R.string.picture_path_key) + (_id + 1), "");
         //num_pictures = pref.getInt(getString(R.string.picture_total_key), -1);
         Drawable pic = Drawable.createFromPath(picture_path);
         //Log.d("ContentValues", picture_path);
@@ -199,6 +200,9 @@ public class ClothingScreen extends AppCompatActivity {
             startActivity(intent);
         }
         _id++;
+        SharedPreferences.Editor edit = pref.edit();
+        edit.putInt(getString(R.string.id_key), _id);
+        edit.commit();
     }
 
     public void launchCamera(View view)
@@ -227,11 +231,7 @@ public class ClothingScreen extends AppCompatActivity {
     //Modified from online tutorial
     private File createImageFile() throws IOException
     {
-        String fileName = "";
-        if(clothesID > 0)
-            fileName = "picture" + (clothesID);
-        else
-            fileName = "picture" + (_id + 1);
+        String fileName = "picture" + (_id + 1);
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         //Log.d("ContentValues", Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(fileName, ".jpg", storageDir);
@@ -274,10 +274,7 @@ public class ClothingScreen extends AppCompatActivity {
         if(resultCode == RESULT_OK)
         {
             SharedPreferences.Editor edit = pref.edit();
-            if(clothesID > 0)
-                edit.putString(getString(R.string.picture_path_key) + clothesID, picture_path);
-            else
-                edit.putString(getString(R.string.picture_path_key) + (_id + 1), picture_path);
+            edit.putString(getString(R.string.picture_path_key) + (_id + 1), picture_path);
             edit.commit();
         }
 

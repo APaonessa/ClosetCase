@@ -52,7 +52,7 @@ public class ClosetScreen extends AppCompatActivity {
         dbHelper = new DBHelper(this);
         dbHelper.getReadableDatabase();
         //clothes = new ArrayList<Clothes>();
-
+/*
         Log.v("testing", "before loadView");
         gridView = (GridView) findViewById(R.id.gridView);
         Log.v("testing", "before getAllClothes");
@@ -63,7 +63,7 @@ public class ClosetScreen extends AppCompatActivity {
         adapter.setSharedPreferences(getSharedPreferences(getString(R.string.preference_file_name), Context.MODE_PRIVATE));
         adapter.setPicturePathKey(getString(R.string.picture_path_key));
         gridView.setAdapter(adapter);
-
+        Log.v("testing", "Adapter added");*/
 
         /*
         gridView.setAdapter(new ImageAdapter(this));
@@ -83,7 +83,7 @@ public class ClosetScreen extends AppCompatActivity {
     protected void onResume()
     {
         super.onResume();
-        setPictures();
+        //setPictures();
     }
 
 
@@ -104,25 +104,16 @@ public class ClosetScreen extends AppCompatActivity {
 
     private void setPictures()
     {
-        SharedPreferences pref = getSharedPreferences(getString(R.string.preference_file_name), Context.MODE_PRIVATE);
-        String path;
-        Drawable pic;
+       // SharedPreferences pref = getSharedPreferences(getString(R.string.preference_file_name), Context.MODE_PRIVATE);
+       // String path;
+       // Drawable pic;
         ImageView image = null;
 
         for(int i = 0; i < clothes.size(); i++)
         {
-            path = pref.getString(getString(R.string.picture_path_key) + clothes.get(i).getId(), "");
-            Log.v("testing", "setPictures path: " + path);
+            Log.v("tester", "Size: " + clothes.size());
+            Log.v("tester", "i: " + i);
             image = (ImageView)adapter.getView(i, image, gridView);
-            /*
-            pic = Drawable.createFromPath(path);
-            image = (ImageView)adapter.getView(i, image, gridView);
-            if(pic != null)
-                image.setImageDrawable(pic);
-            else
-                image.setImageDrawable(getResources().getDrawable(R.drawable.camera_stock));
-            image = null;
-            */
         }
     }
 
