@@ -52,7 +52,7 @@ public class ClosetScreen extends AppCompatActivity {
         dbHelper = new DBHelper(this);
         dbHelper.getReadableDatabase();
         //clothes = new ArrayList<Clothes>();
-/*
+
         Log.v("testing", "before loadView");
         gridView = (GridView) findViewById(R.id.gridView);
         Log.v("testing", "before getAllClothes");
@@ -63,10 +63,9 @@ public class ClosetScreen extends AppCompatActivity {
         adapter.setSharedPreferences(getSharedPreferences(getString(R.string.preference_file_name), Context.MODE_PRIVATE));
         adapter.setPicturePathKey(getString(R.string.picture_path_key));
         gridView.setAdapter(adapter);
-        Log.v("testing", "Adapter added");*/
+        Log.v("testing", "Adapter added");
 
-        /*
-        gridView.setAdapter(new ImageAdapter(this));
+
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
@@ -74,7 +73,7 @@ public class ClosetScreen extends AppCompatActivity {
                 Toast.makeText(ClosetScreen.this, "" + position,
                         Toast.LENGTH_SHORT).show();
             }
-        });*/
+        });
 
 
     }
