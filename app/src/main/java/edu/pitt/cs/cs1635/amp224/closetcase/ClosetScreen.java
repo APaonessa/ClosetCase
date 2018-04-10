@@ -52,7 +52,7 @@ public class ClosetScreen extends AppCompatActivity {
         dbHelper = new DBHelper(this);
         dbHelper.getReadableDatabase();
         //clothes = new ArrayList<Clothes>();
-
+/*
         Log.v("testing", "before loadView");
         gridView = (GridView) findViewById(R.id.gridView);
         Log.v("testing", "before getAllClothes");
@@ -73,7 +73,7 @@ public class ClosetScreen extends AppCompatActivity {
                 Toast.makeText(ClosetScreen.this, "" + position,
                         Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
 
     }
