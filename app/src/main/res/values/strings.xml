@@ -54,4 +54,5 @@
     <string name="picture_path_key">picture</string>
     <!-- Preference File key.-->
     <string name="preference_file_name">edu.pitt.cs.cs1635.amp224.closetcase.PREFERENCE_FILE</string>
+    <string name="id_key">id</string>
 </resources>
