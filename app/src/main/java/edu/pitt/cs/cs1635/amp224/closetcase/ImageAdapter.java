@@ -57,15 +57,17 @@ public class ImageAdapter extends BaseAdapter {
             if (convertView == null) {
                 // if it's not recycled, initialize some attributes
                 imageView = new ImageView(mContext);
-                imageView.setLayoutParams(new GridView.LayoutParams(GridLayout.LayoutParams.WRAP_CONTENT, GridLayout.LayoutParams.WRAP_CONTENT));
+                imageView.setLayoutParams(new GridView.LayoutParams(300,300));
+                //imageView.setLayoutParams(new GridView.LayoutParams(GridLayout.LayoutParams.MATCH_PARENT, GridLayout.LayoutParams.MATCH_PARENT));
                 imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 imageView.setPadding(8, 8, 8, 8);
             } else {
                 imageView = (ImageView) convertView;
             }
             Log.v("tester", "position: " + position);
-            if(!clothesList.isEmpty())
-               path = sharedPreferences.getString(picturePathKey + clothesList.get(position).getId(), "");
+            /*if(!clothesList.isEmpty())
+               //path = sharedPreferences.getString(picturePathKey + clothesList.get(position).getId(), "");
+                imageView.setImageResource(R.drawable.camera_stock);
 
             Log.v("tester", "getView path: " + path);
             Drawable pic = Drawable.createFromPath(path);
@@ -74,7 +76,8 @@ public class ImageAdapter extends BaseAdapter {
                 imageView.setImageDrawable(pic);
             } else {
                 imageView.setImageResource(R.drawable.camera_stock);
-            }
+            }*/
+            imageView.setImageResource(R.drawable.camera_stock);
             return imageView;
         }
 
