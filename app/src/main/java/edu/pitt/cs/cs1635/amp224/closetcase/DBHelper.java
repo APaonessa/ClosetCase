@@ -379,7 +379,278 @@ public class DBHelper extends SQLiteOpenHelper{
         return clothes;
     }
 
+    public ArrayList<Clothes> whenRedShirtSelected() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + CLOTHES_TABLE_NAME + " WHERE " +
+                CLOTHES_COLUMN_TYPE + "=Pants AND " + CLOTHES_COLUMN_COLOR + "=Black", new String[]{String.valueOf(CLOTHES_COLUMN_TYPE)});
+        ArrayList<Clothes> clothes = new ArrayList<Clothes>();
 
+        res.moveToFirst();
+        if (res.moveToFirst()) {
+            do {
+                //ArrayList<Clothes> cts = new ArrayList<Clothes>();
+
+                int id = res.getInt(res.getColumnIndex(CLOTHES_COLUMN_ID));
+                String name = res.getString(res.getColumnIndex(CLOTHES_COLUMN_NAME));
+                String color = res.getString(res.getColumnIndex(CLOTHES_COLUMN_COLOR));
+                String type = res.getString(res.getColumnIndex(CLOTHES_COLUMN_TYPE));
+                String pattern = res.getString(res.getColumnIndex(CLOTHES_COLUMN_PATTERN));
+                String material = res.getString(res.getColumnIndex(CLOTHES_COLUMN_MATERIAL));
+                Clothes newClothes = new Clothes();
+
+                newClothes.setId(id);
+                newClothes.setName(name);
+                newClothes.setColor(color);
+                newClothes.setType(type);
+                newClothes.setPattern(pattern);
+                newClothes.setMaterial(material);
+
+
+                clothes.add(newClothes);
+            } while (res.moveToNext());
+        }
+        res.close();
+        return clothes;
+    }
+
+    public ArrayList<Clothes> whenBlackShirtSelected() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + CLOTHES_TABLE_NAME + " WHERE " +
+                CLOTHES_COLUMN_TYPE + "=Pants AND " + CLOTHES_COLUMN_COLOR + "=Blue", new String[]{String.valueOf(CLOTHES_COLUMN_TYPE)});
+        ArrayList<Clothes> clothes = new ArrayList<Clothes>();
+
+        res.moveToFirst();
+        if (res.moveToFirst()) {
+            do {
+                //ArrayList<Clothes> cts = new ArrayList<Clothes>();
+
+                int id = res.getInt(res.getColumnIndex(CLOTHES_COLUMN_ID));
+                String name = res.getString(res.getColumnIndex(CLOTHES_COLUMN_NAME));
+                String color = res.getString(res.getColumnIndex(CLOTHES_COLUMN_COLOR));
+                String type = res.getString(res.getColumnIndex(CLOTHES_COLUMN_TYPE));
+                String pattern = res.getString(res.getColumnIndex(CLOTHES_COLUMN_PATTERN));
+                String material = res.getString(res.getColumnIndex(CLOTHES_COLUMN_MATERIAL));
+                Clothes newClothes = new Clothes();
+
+                newClothes.setId(id);
+                newClothes.setName(name);
+                newClothes.setColor(color);
+                newClothes.setType(type);
+                newClothes.setPattern(pattern);
+                newClothes.setMaterial(material);
+
+
+                clothes.add(newClothes);
+            } while (res.moveToNext());
+        }
+        res.close();
+        return clothes;
+    }
+
+    public ArrayList<Clothes> whenBlueShirtSelected() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + CLOTHES_TABLE_NAME + " WHERE " +
+                CLOTHES_COLUMN_TYPE + "=Pants AND " + CLOTHES_COLUMN_COLOR + "=Black", new String[]{String.valueOf(CLOTHES_COLUMN_TYPE)});
+        ArrayList<Clothes> clothes = new ArrayList<Clothes>();
+
+        res.moveToFirst();
+        if (res.moveToFirst()) {
+            do {
+                //ArrayList<Clothes> cts = new ArrayList<Clothes>();
+
+                int id = res.getInt(res.getColumnIndex(CLOTHES_COLUMN_ID));
+                String name = res.getString(res.getColumnIndex(CLOTHES_COLUMN_NAME));
+                String color = res.getString(res.getColumnIndex(CLOTHES_COLUMN_COLOR));
+                String type = res.getString(res.getColumnIndex(CLOTHES_COLUMN_TYPE));
+                String pattern = res.getString(res.getColumnIndex(CLOTHES_COLUMN_PATTERN));
+                String material = res.getString(res.getColumnIndex(CLOTHES_COLUMN_MATERIAL));
+                Clothes newClothes = new Clothes();
+
+                newClothes.setId(id);
+                newClothes.setName(name);
+                newClothes.setColor(color);
+                newClothes.setType(type);
+                newClothes.setPattern(pattern);
+                newClothes.setMaterial(material);
+
+
+                clothes.add(newClothes);
+            } while (res.moveToNext());
+        }
+        res.close();
+        return clothes;
+    }
+
+    public ArrayList<Clothes> whenBrownShirtSelected() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + CLOTHES_TABLE_NAME + " WHERE " +
+                CLOTHES_COLUMN_TYPE + "=Pants AND " + CLOTHES_COLUMN_COLOR + "=Blue", new String[]{String.valueOf(CLOTHES_COLUMN_TYPE)});
+        ArrayList<Clothes> clothes = new ArrayList<Clothes>();
+
+        res.moveToFirst();
+        if (res.moveToFirst()) {
+            do {
+                //ArrayList<Clothes> cts = new ArrayList<Clothes>();
+
+                int id = res.getInt(res.getColumnIndex(CLOTHES_COLUMN_ID));
+                String name = res.getString(res.getColumnIndex(CLOTHES_COLUMN_NAME));
+                String color = res.getString(res.getColumnIndex(CLOTHES_COLUMN_COLOR));
+                String type = res.getString(res.getColumnIndex(CLOTHES_COLUMN_TYPE));
+                String pattern = res.getString(res.getColumnIndex(CLOTHES_COLUMN_PATTERN));
+                String material = res.getString(res.getColumnIndex(CLOTHES_COLUMN_MATERIAL));
+                Clothes newClothes = new Clothes();
+
+                newClothes.setId(id);
+                newClothes.setName(name);
+                newClothes.setColor(color);
+                newClothes.setType(type);
+                newClothes.setPattern(pattern);
+                newClothes.setMaterial(material);
+
+
+                clothes.add(newClothes);
+            } while (res.moveToNext());
+        }
+        res.close();
+        return clothes;
+    }
+
+    public ArrayList<Clothes> whenRedPantsSelected() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + CLOTHES_TABLE_NAME + " WHERE " +
+                CLOTHES_COLUMN_TYPE + "=Shirt AND " + CLOTHES_COLUMN_COLOR + "=Black", new String[]{String.valueOf(CLOTHES_COLUMN_TYPE)});
+        ArrayList<Clothes> clothes = new ArrayList<Clothes>();
+
+        res.moveToFirst();
+        if (res.moveToFirst()) {
+            do {
+                //ArrayList<Clothes> cts = new ArrayList<Clothes>();
+
+                int id = res.getInt(res.getColumnIndex(CLOTHES_COLUMN_ID));
+                String name = res.getString(res.getColumnIndex(CLOTHES_COLUMN_NAME));
+                String color = res.getString(res.getColumnIndex(CLOTHES_COLUMN_COLOR));
+                String type = res.getString(res.getColumnIndex(CLOTHES_COLUMN_TYPE));
+                String pattern = res.getString(res.getColumnIndex(CLOTHES_COLUMN_PATTERN));
+                String material = res.getString(res.getColumnIndex(CLOTHES_COLUMN_MATERIAL));
+                Clothes newClothes = new Clothes();
+
+                newClothes.setId(id);
+                newClothes.setName(name);
+                newClothes.setColor(color);
+                newClothes.setType(type);
+                newClothes.setPattern(pattern);
+                newClothes.setMaterial(material);
+
+
+                clothes.add(newClothes);
+            } while (res.moveToNext());
+        }
+        res.close();
+        return clothes;
+    }
+
+
+    public ArrayList<Clothes> whenBlackPantsSelected() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + CLOTHES_TABLE_NAME + " WHERE " +
+                CLOTHES_COLUMN_TYPE + "=Shirt AND " + CLOTHES_COLUMN_COLOR + "=Red", new String[]{String.valueOf(CLOTHES_COLUMN_TYPE)});
+        ArrayList<Clothes> clothes = new ArrayList<Clothes>();
+
+        res.moveToFirst();
+        if (res.moveToFirst()) {
+            do {
+                //ArrayList<Clothes> cts = new ArrayList<Clothes>();
+
+                int id = res.getInt(res.getColumnIndex(CLOTHES_COLUMN_ID));
+                String name = res.getString(res.getColumnIndex(CLOTHES_COLUMN_NAME));
+                String color = res.getString(res.getColumnIndex(CLOTHES_COLUMN_COLOR));
+                String type = res.getString(res.getColumnIndex(CLOTHES_COLUMN_TYPE));
+                String pattern = res.getString(res.getColumnIndex(CLOTHES_COLUMN_PATTERN));
+                String material = res.getString(res.getColumnIndex(CLOTHES_COLUMN_MATERIAL));
+                Clothes newClothes = new Clothes();
+
+                newClothes.setId(id);
+                newClothes.setName(name);
+                newClothes.setColor(color);
+                newClothes.setType(type);
+                newClothes.setPattern(pattern);
+                newClothes.setMaterial(material);
+
+
+                clothes.add(newClothes);
+            } while (res.moveToNext());
+        }
+        res.close();
+        return clothes;
+    }
+
+    public ArrayList<Clothes> whenBluePantsSelected() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + CLOTHES_TABLE_NAME + " WHERE " +
+                CLOTHES_COLUMN_TYPE + "=Shirt AND " + CLOTHES_COLUMN_COLOR + "=Brown", new String[]{String.valueOf(CLOTHES_COLUMN_TYPE)});
+        ArrayList<Clothes> clothes = new ArrayList<Clothes>();
+
+        res.moveToFirst();
+        if (res.moveToFirst()) {
+            do {
+                //ArrayList<Clothes> cts = new ArrayList<Clothes>();
+
+                int id = res.getInt(res.getColumnIndex(CLOTHES_COLUMN_ID));
+                String name = res.getString(res.getColumnIndex(CLOTHES_COLUMN_NAME));
+                String color = res.getString(res.getColumnIndex(CLOTHES_COLUMN_COLOR));
+                String type = res.getString(res.getColumnIndex(CLOTHES_COLUMN_TYPE));
+                String pattern = res.getString(res.getColumnIndex(CLOTHES_COLUMN_PATTERN));
+                String material = res.getString(res.getColumnIndex(CLOTHES_COLUMN_MATERIAL));
+                Clothes newClothes = new Clothes();
+
+                newClothes.setId(id);
+                newClothes.setName(name);
+                newClothes.setColor(color);
+                newClothes.setType(type);
+                newClothes.setPattern(pattern);
+                newClothes.setMaterial(material);
+
+
+                clothes.add(newClothes);
+            } while (res.moveToNext());
+        }
+        res.close();
+        return clothes;
+    }
+
+    public ArrayList<Clothes> whenBrownPantsSelected() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + CLOTHES_TABLE_NAME + " WHERE " +
+                CLOTHES_COLUMN_TYPE + "=Shirt AND " + CLOTHES_COLUMN_COLOR + "=Red", new String[]{String.valueOf(CLOTHES_COLUMN_TYPE)});
+        ArrayList<Clothes> clothes = new ArrayList<Clothes>();
+
+        res.moveToFirst();
+        if (res.moveToFirst()) {
+            do {
+                //ArrayList<Clothes> cts = new ArrayList<Clothes>();
+
+                int id = res.getInt(res.getColumnIndex(CLOTHES_COLUMN_ID));
+                String name = res.getString(res.getColumnIndex(CLOTHES_COLUMN_NAME));
+                String color = res.getString(res.getColumnIndex(CLOTHES_COLUMN_COLOR));
+                String type = res.getString(res.getColumnIndex(CLOTHES_COLUMN_TYPE));
+                String pattern = res.getString(res.getColumnIndex(CLOTHES_COLUMN_PATTERN));
+                String material = res.getString(res.getColumnIndex(CLOTHES_COLUMN_MATERIAL));
+                Clothes newClothes = new Clothes();
+
+                newClothes.setId(id);
+                newClothes.setName(name);
+                newClothes.setColor(color);
+                newClothes.setType(type);
+                newClothes.setPattern(pattern);
+                newClothes.setMaterial(material);
+
+
+                clothes.add(newClothes);
+            } while (res.moveToNext());
+        }
+        res.close();
+        return clothes;
+    }
 
 
 }
