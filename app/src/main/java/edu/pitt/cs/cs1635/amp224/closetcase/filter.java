@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.GridView;
+
+import java.util.ArrayList;
 
 public class filter extends AppCompatActivity {
 
@@ -17,6 +20,10 @@ public class filter extends AppCompatActivity {
     CheckBox type2;
     Button complete;
     DBHelper dbHelper = new DBHelper(this);
+    GridView gridView;
+    ImageAdapter adapter;
+    ArrayList<Clothes> clothes;
+
 
     public DBHelper getDbHelper() {
         return dbHelper;
@@ -37,58 +44,49 @@ public class filter extends AppCompatActivity {
         complete = findViewById(R.id.Accept);
 
 
-
     }
 
-    public void goToClosetScreen(View view){
+    public void goToClosetScreen(View view) {
         Intent intent = new Intent(this, ClosetScreen.class);
-        startActivity(intent);
+    }
+        public ArrayList<Clothes> filter () {
+            getDbHelper();
+            ArrayList<Clothes> clothes = new ArrayList<Clothes>();
+            dbHelper.getReadableDatabase();
+            if (color1.isChecked() == true) {
+                clothes = dbHelper.getBlackClothes();
+
+            } else if (color2.isChecked() == true) {
+                clothes = dbHelper.getBlueClothes();
+
+            } else if (color3.isChecked() == true) {
+                clothes = dbHelper.getrRedClothes();
+            } else if (color4.isChecked() == true) {
+                clothes = dbHelper.getBrownClothes();
+            } else if ((color1.isChecked() == true) && (color2.isChecked() == true)) {
+                clothes = dbHelper.getBlackClothes();
+                clothes = dbHelper.getBlueClothes();
+            } else if ((color1.isChecked() == true) && (color3.isChecked() == true)) {
+                clothes = dbHelper.getBlackClothes();
+                clothes = dbHelper.getrRedClothes();
+
+            } else if ((color1.isChecked() == true) && (color4.isChecked() == true)) {
+                clothes = dbHelper.getBlackClothes();
+                clothes = dbHelper.getBrownClothes();
+
+            } else if ((color2.isChecked() == true) && (color3.isChecked() == true)) {
+                clothes = dbHelper.getBlueClothes();
+                clothes = dbHelper.getrRedClothes();
+
+            } else if ((color2.isChecked() == true) && (color4.isChecked() == true)) {
+                clothes = dbHelper.getBlueClothes();
+                clothes = dbHelper.getBrownClothes();
+
+            } else {
+                clothes = dbHelper.getrRedClothes();
+                clothes = dbHelper.getBrownClothes();
+            }
+            return clothes;
+        }
     }
 
-    public void filter(){
-        getDbHelper();
-        dbHelper.getReadableDatabase();
-        if(color1.isChecked() == true){
-            dbHelper.getBlackClothes();
-
-        }
-        else if(color2.isChecked() == true){
-            dbHelper.getBlueClothes();
-
-        }
-        else if(color3.isChecked() == true){
-            dbHelper.getrRedClothes();
-        }
-        else if(color4.isChecked() == true){
-            dbHelper.getBrownClothes();
-        }
-        else if((color1.isChecked() ==true)&& (color2.isChecked() == true)){
-            dbHelper.getBlackClothes();
-            dbHelper.getBlueClothes();
-        }
-        else if((color1.isChecked() == true) && (color3.isChecked() == true)){
-            dbHelper.getBlackClothes();
-            dbHelper.getrRedClothes();
-
-        }
-        else if((color1.isChecked() == true) && (color4.isChecked() == true)){
-            dbHelper.getBlackClothes();
-            dbHelper.getBrownClothes();
-
-        }
-        else if((color2.isChecked() == true) && (color3.isChecked() == true)){
-            dbHelper.getBlueClothes();
-            dbHelper.getrRedClothes();
-
-        }
-        else if((color2.isChecked() == true) && (color4.isChecked() == true)){
-            dbHelper.getBlueClothes();
-            dbHelper.getBrownClothes();
-
-        }
-        else{
-            dbHelper.getrRedClothes();
-            dbHelper.getBrownClothes();
-        }
-    }
-}
