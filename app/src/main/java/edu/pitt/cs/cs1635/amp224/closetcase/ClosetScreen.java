@@ -54,15 +54,17 @@ public class ClosetScreen extends AppCompatActivity {
         clothes = new ArrayList<Clothes>();
 
         gridView = (GridView) findViewById(R.id.gridView);
+        clothes = dbHelper.getAllClothes();
         adapter = new ImageAdapter(ClosetScreen.this, clothes);
         gridView.setAdapter(adapter);
 
+        /*
         Log.v("testing", "before loadView");
         gridView = (GridView) findViewById(R.id.gridView);
         Log.v("testing", "before getAllClothes");
         clothes = dbHelper.getAllClothes();
         Log.v("testing", "after getAllClothes");
-
+*/
         adapter = new ImageAdapter(ClosetScreen.this, clothes);
         adapter.setSharedPreferences(getSharedPreferences(getString(R.string.preference_file_name), Context.MODE_PRIVATE));
         adapter.setPicturePathKey(getString(R.string.picture_path_key));

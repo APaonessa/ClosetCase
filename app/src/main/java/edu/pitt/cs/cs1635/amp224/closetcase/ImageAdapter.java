@@ -65,20 +65,25 @@ public class ImageAdapter extends BaseAdapter {
                 imageView = (ImageView) convertView;
             }
             Log.v("tester", "position: " + position);
-            /*if(!clothesList.isEmpty())
-               //path = sharedPreferences.getString(picturePathKey + clothesList.get(position).getId(), "");
-                imageView.setImageResource(R.drawable.camera_stock);
+            if(!clothesList.isEmpty())
+               path = sharedPreferences.getString(picturePathKey + clothesList.get(position).getId(), "");
+                Log.v("tester", "getView path: " + path);
+                Drawable pic = Drawable.createFromPath(path);
+                imageView.setImageDrawable(pic);
+                //imageView.setImageResource(R.drawable.camera_stock);
 
-            Log.v("tester", "getView path: " + path);
-            Drawable pic = Drawable.createFromPath(path);
-
+           // Log.v("tester", "getView path: " + path);
+            //Drawable pic = Drawable.createFromPath(path);
+/*
             if (pic != null) {
                 imageView.setImageDrawable(pic);
             } else {
                 imageView.setImageResource(R.drawable.camera_stock);
-            }*/
+            }
             imageView.setImageResource(R.drawable.camera_stock);
+            */
             return imageView;
+
         }
 
 /*
