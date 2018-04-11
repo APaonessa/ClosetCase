@@ -39,7 +39,7 @@ public class ImageAdapter extends BaseAdapter {
         }
 
         public int getCount() {
-            return mThumbIds.length;
+            return clothesList.size();
         }
 
         public Object getItem(int position) {
@@ -81,6 +81,18 @@ public class ImageAdapter extends BaseAdapter {
             return imageView;
         }
 
+/*
+    private void setPicture(int id, ImageView v)
+    {
+        SharedPreferences pref = getSharedPreferences(getString(R.string.preference_file_name), Context.MODE_PRIVATE);
+        String path = pref.getString(getString(R.string.picture_path_key) + id, "");
+        //Log.d("OutfitScreen", path);
+        Drawable image = Drawable.createFromPath(path);
+        if(image != null)
+            v.setImageDrawable(image);
+        else
+            v.setImageDrawable(getResources().getDrawable(R.drawable.camera_stock));
+    }*/
 
         // references to our images
         private Integer[] mThumbIds = {

@@ -51,12 +51,12 @@ public class ClosetScreen extends AppCompatActivity {
 
         dbHelper = new DBHelper(this);
         dbHelper.getReadableDatabase();
-        //clothes = new ArrayList<Clothes>();
+        clothes = new ArrayList<Clothes>();
 
         gridView = (GridView) findViewById(R.id.gridView);
-        adapter = new ImageAdapter(ClosetScreen.this, null);
+        adapter = new ImageAdapter(ClosetScreen.this, clothes);
         gridView.setAdapter(adapter);
-/*
+
         Log.v("testing", "before loadView");
         gridView = (GridView) findViewById(R.id.gridView);
         Log.v("testing", "before getAllClothes");
@@ -68,7 +68,7 @@ public class ClosetScreen extends AppCompatActivity {
         adapter.setPicturePathKey(getString(R.string.picture_path_key));
         gridView.setAdapter(adapter);
         Log.v("testing", "Adapter added");
-*/
+
 
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
